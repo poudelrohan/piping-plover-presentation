@@ -226,18 +226,19 @@ function CircleStepNode({ step, position }) {
   )
 }
 
-// Steps arranged in an arrow shape (>) with the tip pointing right.
-// Top wing: steps 0,1,2,3 going SE (down-right).
-// Step 3 is the tip (rightmost point).
-// Bottom wing: steps 3,4,5,6 going SW from the tip (down-left).
+// Steps arranged in a => arrow shape:
+//  - Steps 0,1,2 horizontal across the top  (the top of the "=")
+//  - Step 3 is the TIP, sitting to the right at middle height (the ">")
+//  - Steps 4,5,6 horizontal across the bottom, mirroring the top (the bottom of the "=")
+// Path: 0—1—2  (horizontal)  →  3 (diagonal SE to tip)  →  4 (diagonal SW back to bottom-left)  →  5—6 (horizontal)
 const ZIGZAG_POSITIONS = [
-  { x: 110, y: 80  },  // Step 0: top-left
-  { x: 280, y: 180 },  // Step 1: SE
-  { x: 450, y: 280 },  // Step 2: SE
-  { x: 620, y: 380 },  // Step 3: SE (TIP — rightmost point of arrow)
-  { x: 450, y: 480 },  // Step 4: SW (mirror of step 2)
-  { x: 280, y: 580 },  // Step 5: SW (mirror of step 1)
-  { x: 110, y: 680 },  // Step 6: SW (mirror of step 0, bottom-left)
+  { x: 110, y: 200 },  // Step 0: top-left
+  { x: 290, y: 200 },  // Step 1: horizontal right of 0
+  { x: 470, y: 200 },  // Step 2: horizontal right of 1 (end of top row)
+  { x: 720, y: 360 },  // Step 3: TIP — diagonal SE of step 2, at middle height
+  { x: 110, y: 520 },  // Step 4: diagonal SW from tip — back to bottom-left (mirror of step 0)
+  { x: 290, y: 520 },  // Step 5: horizontal right of 4
+  { x: 470, y: 520 },  // Step 6: horizontal right of 5 (end of bottom row)
 ]
 
 export default function Slide5() {
@@ -528,11 +529,10 @@ export default function Slide5() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6 }}
             >
-              {/* Position the END label below-right of step 6 (step 6 is at the
-                  bottom-left tip of the arrow). */}
+              {/* END label placed to the right of step 6 (last node, bottom-right of body) */}
               {(() => {
                 const last = positions[STEPS.length - 1]
-                const labelX = last.x + 130   // right of the card
+                const labelX = last.x + 130
                 const labelY = last.y
                 return (
                   <>

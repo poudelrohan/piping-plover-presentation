@@ -16,10 +16,10 @@ const STEPS = [
   {
     num: '0',
     name: 'Extract PIPL',
-    why: 'Pull only Piping Plover rows out of the multi-species sheets',
+    why: 'Pull only Piping Plover rows from multi-species sheets',
     file: '0_extract_pipl.py',
     icon: Filter,
-    variant: 'special', // DB3 only
+    variant: 'special',
     note: 'DB3 only',
   },
   {
@@ -49,7 +49,7 @@ const STEPS = [
   {
     num: '4',
     name: 'Standardize Columns',
-    why: 'Rename and reorder columns to one shared schema',
+    why: 'Rename and reorder to one shared schema',
     file: '4_select_columns.py',
     icon: Columns3,
     variant: 'normal',
@@ -65,7 +65,7 @@ const STEPS = [
   {
     num: '6',
     name: 'Final Report',
-    why: 'Output a 3-sheet Excel: Clean, Removed, and Summary',
+    why: 'Output a 3-sheet Excel: Clean, Removed, Summary',
     file: '6_create_final_report.py',
     icon: FileCheck2,
     variant: 'final',
@@ -83,25 +83,25 @@ const TECH = [
     name: 'pandas',
     icon: Database,
     type: 'Python library',
-    desc: 'A library for working with tables of data. It reads, filters, joins, and rewrites every row.',
+    desc: 'Reads, filters, joins, and rewrites every row in a table.',
   },
   {
     name: 'openpyxl',
     icon: FileSpreadsheet,
     type: 'Python library',
-    desc: 'Opens and writes the multi-sheet Excel files that the surveys live in.',
+    desc: 'Opens and writes the multi-sheet Excel files the surveys live in.',
   },
   {
     name: 'Git',
     icon: GitBranch,
     type: 'Version control',
-    desc: 'Tracks every change to the pipeline so nothing is ever lost.',
+    desc: 'Tracks every change to the pipeline so nothing is lost.',
   },
   {
     name: 'GitHub',
     icon: Github,
     type: 'Code & file hosting',
-    desc: 'Where the pipeline lives online, and where the cleaned files are shared with the mentors.',
+    desc: 'Hosts the repo and shares the cleaned files with the mentors.',
   },
 ]
 
@@ -114,22 +114,22 @@ const variantColors = {
     arrow: 'rgba(212,112,74,0.7)',
   },
   normal: {
-    bg: 'rgba(22,61,106,0.5)',
-    border: 'rgba(143,184,217,0.35)',
+    bg: 'rgba(22,61,106,0.55)',
+    border: 'rgba(143,184,217,0.4)',
     accent: 'rgba(143,184,217,0.95)',
     iconBg: 'rgba(143,184,217,0.18)',
     arrow: 'rgba(143,184,217,0.7)',
   },
   final: {
     bg: 'rgba(70,170,120,0.18)',
-    border: 'rgba(100,210,165,0.55)',
+    border: 'rgba(100,210,165,0.6)',
     accent: 'rgba(140,235,190,1)',
     iconBg: 'rgba(100,210,165,0.22)',
     arrow: 'rgba(100,210,165,0.7)',
   },
 }
 
-// Compact step node used in the circle arrangement
+// Compact step node placed on the circle
 function CircleStepNode({ step, position }) {
   const c = variantColors[step.variant]
   const Icon = step.icon
@@ -151,9 +151,9 @@ function CircleStepNode({ step, position }) {
         padding: '14px 14px 12px',
         backdropFilter: 'blur(8px)',
         textAlign: 'center',
+        zIndex: 5,
       }}
     >
-      {/* DB3 only tag */}
       {step.note && (
         <div style={{
           position: 'absolute',
@@ -170,13 +170,12 @@ function CircleStepNode({ step, position }) {
           color: '#F4EFE4',
           fontWeight: 600,
           whiteSpace: 'nowrap',
-          zIndex: 5,
+          zIndex: 6,
         }}>
           {step.note}
         </div>
       )}
 
-      {/* Step number + icon row */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -206,20 +205,20 @@ function CircleStepNode({ step, position }) {
 
       <div style={{
         fontFamily: '"Playfair Display"',
-        fontSize: '16px',
+        fontSize: '15.5px',
         fontWeight: 600,
         color: '#F4EFE4',
         lineHeight: 1.2,
-        marginBottom: '6px',
+        marginBottom: '5px',
       }}>
         {step.name}
       </div>
 
       <div style={{
         fontFamily: '"DM Sans"',
-        fontSize: '12.5px',
+        fontSize: '11.5px',
         color: 'rgba(200,223,240,0.85)',
-        lineHeight: 1.4,
+        lineHeight: 1.35,
       }}>
         {step.why}
       </div>
@@ -227,16 +226,9 @@ function CircleStepNode({ step, position }) {
   )
 }
 
-// Compute clock-face positions for 7 nodes around a circle.
-// Step 0 is at top (12 o'clock), going clockwise around to step 6.
-// Because 7 doesn't divide evenly, leave a "gap" between step 6 and step 0
-// so the arrangement reads as a circle but NOT a closed loop.
+// Place 7 nodes evenly around a circle. Step 0 at the top (12 o'clock).
 function getCirclePosition(index, total, cx, cy, rx, ry) {
-  // Use 8 slots, place steps in 7 of them, leave the top-right slot empty
-  // to visually break the loop.
-  const slots = total + 1 // 8 slots, but only 7 nodes
-  const angleStep = (2 * Math.PI) / slots
-  // Start at -90deg (top), step 0 occupies that slot
+  const angleStep = (2 * Math.PI) / total
   const angle = -Math.PI / 2 + index * angleStep
   return {
     x: cx + rx * Math.cos(angle),
@@ -245,10 +237,11 @@ function getCirclePosition(index, total, cx, cy, rx, ry) {
 }
 
 export default function Slide5() {
-  const cx = 580
-  const cy = 320
-  const rx = 480
-  const ry = 240
+  // Circle dimensions
+  const cx = 470
+  const cy = 360
+  const rx = 320
+  const ry = 290
 
   const positions = STEPS.map((_, i) => getCirclePosition(i, STEPS.length, cx, cy, rx, ry))
 
@@ -262,7 +255,7 @@ export default function Slide5() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '50px 50px 100px',
+      padding: '50px 60px 100px',
     }}>
       <Birds density="sparse" />
 
@@ -315,127 +308,26 @@ export default function Slide5() {
         </motion.p>
       </div>
 
-      {/* Steps arranged in a circle (with a gap between step 6 and step 0 so it isn't a closed loop) */}
+      {/* Two-column main area: tech stack on the LEFT, circle on the RIGHT */}
       <div style={{
-        position: 'relative',
-        width: '1160px',
-        height: '600px',
+        display: 'grid',
+        gridTemplateColumns: '320px 1fr',
+        gap: '40px',
+        width: '100%',
+        maxWidth: '1500px',
+        flex: 1,
         zIndex: 10,
+        alignItems: 'center',
       }}>
-        {/* Background ring */}
-        <svg viewBox="0 0 1160 600" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-          <defs>
-            <marker id="step-arrow" viewBox="0 0 10 10" refX="6" refY="5"
-              markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-              <path d="M0,0 L10,5 L0,10 z" fill="rgba(143,184,217,0.7)" />
-            </marker>
-          </defs>
-
-          {/* Arc connectors between consecutive steps (linear, not closing back) */}
-          {STEPS.map((step, i) => {
-            if (i === STEPS.length - 1) return null
-            const p1 = positions[i]
-            const p2 = positions[i + 1]
-            // Use the arc through the ring centerline by dropping a curve toward the center
-            const mx = (p1.x + p2.x) / 2
-            const my = (p1.y + p2.y) / 2
-            // Pull control point toward center to create an inward arc
-            const centerPullX = mx + (cx - mx) * 0.35
-            const centerPullY = my + (cy - my) * 0.35
-            const isFromSpecial = step.variant === 'special'
-            return (
-              <motion.path
-                key={i}
-                d={`M ${p1.x} ${p1.y} Q ${centerPullX} ${centerPullY}, ${p2.x} ${p2.y}`}
-                stroke={isFromSpecial ? 'rgba(212,112,74,0.6)' : 'rgba(143,184,217,0.5)'}
-                strokeWidth="1.5"
-                fill="none"
-                markerEnd="url(#step-arrow)"
-                strokeDasharray={isFromSpecial ? '5 4' : '0'}
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.6 + i * 0.12 }}
-              />
-            )
-          })}
-
-          {/* HEAD label at step 0 */}
-          <motion.g
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            <rect
-              x={positions[0].x - 32}
-              y={positions[0].y - 100}
-              width="64"
-              height="22"
-              rx="11"
-              fill="rgba(217,188,130,0.12)"
-              stroke="rgba(217,188,130,0.45)"
-              strokeWidth="1"
-              strokeDasharray="3 3"
-            />
-            <text
-              x={positions[0].x}
-              y={positions[0].y - 84}
-              textAnchor="middle"
-              fill="rgba(217,188,130,0.95)"
-              style={{ fontFamily: '"JetBrains Mono"', fontSize: '11px', letterSpacing: '0.16em', fontWeight: 600 }}
-            >
-              START
-            </text>
-          </motion.g>
-
-          {/* END label at step 6 */}
-          <motion.g
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.6 }}
-          >
-            <rect
-              x={positions[STEPS.length - 1].x - 28}
-              y={positions[STEPS.length - 1].y - 100}
-              width="56"
-              height="22"
-              rx="11"
-              fill="rgba(100,210,165,0.14)"
-              stroke="rgba(100,210,165,0.5)"
-              strokeWidth="1"
-              strokeDasharray="3 3"
-            />
-            <text
-              x={positions[STEPS.length - 1].x}
-              y={positions[STEPS.length - 1].y - 84}
-              textAnchor="middle"
-              fill="rgba(140,235,190,1)"
-              style={{ fontFamily: '"JetBrains Mono"', fontSize: '11px', letterSpacing: '0.16em', fontWeight: 600 }}
-            >
-              END
-            </text>
-          </motion.g>
-        </svg>
-
-        {/* Step nodes */}
-        {STEPS.map((step, i) => (
-          <CircleStepNode key={i} step={step} position={positions[i]} />
-        ))}
-
-        {/* Center label: tech stack lives here */}
+        {/* LEFT: vertical tech stack */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           style={{
-            position: 'absolute',
-            left: cx,
-            top: cy,
-            transform: 'translate(-50%, -50%)',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            gap: '14px',
-            width: '460px',
+            gap: '12px',
           }}
         >
           <div style={{
@@ -445,72 +337,255 @@ export default function Slide5() {
             textTransform: 'uppercase',
             color: 'rgba(217,188,130,0.85)',
             fontWeight: 600,
-            marginBottom: '2px',
+            marginBottom: '6px',
+            paddingLeft: '4px',
           }}>
             Built With
           </div>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(5, 1fr)',
-            gap: '8px',
-            width: '100%',
-          }}>
-            {TECH.map((tech, i) => {
-              const Icon = tech.icon
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2 + i * 0.08 }}
-                  style={{
-                    background: 'rgba(11,35,64,0.7)',
-                    border: '1.5px solid rgba(143,184,217,0.3)',
-                    borderRadius: '10px',
-                    padding: '12px 8px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '6px',
-                    textAlign: 'center',
-                  }}
-                  title={tech.desc}
-                >
-                  <Icon size={20} color="rgba(217,188,130,1)" />
+
+          {TECH.map((tech, i) => {
+            const Icon = tech.icon
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -15 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.45, delay: 0.5 + i * 0.08 }}
+                style={{
+                  background: 'rgba(11,35,64,0.55)',
+                  border: '1.5px solid rgba(143,184,217,0.28)',
+                  borderRadius: '12px',
+                  padding: '12px 14px',
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '12px',
+                }}
+              >
+                <div style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '9px',
+                  background: 'rgba(217,188,130,0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <Icon size={18} color="rgba(217,188,130,1)" />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{
-                    fontFamily: '"JetBrains Mono"',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    color: '#F4EFE4',
-                    lineHeight: 1.1,
+                    display: 'flex',
+                    alignItems: 'baseline',
+                    gap: '8px',
+                    marginBottom: '2px',
+                    flexWrap: 'wrap',
                   }}>
-                    {tech.name}
+                    <span style={{
+                      fontFamily: '"JetBrains Mono"',
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      color: '#F4EFE4',
+                    }}>
+                      {tech.name}
+                    </span>
+                    <span style={{
+                      fontFamily: '"DM Sans"',
+                      fontSize: '10px',
+                      color: 'rgba(217,188,130,0.7)',
+                      letterSpacing: '0.06em',
+                    }}>
+                      {tech.type}
+                    </span>
                   </div>
                   <div style={{
                     fontFamily: '"DM Sans"',
-                    fontSize: '9.5px',
-                    letterSpacing: '0.06em',
-                    color: 'rgba(217,188,130,0.7)',
-                    lineHeight: 1.15,
+                    fontSize: '11.5px',
+                    color: 'rgba(200,223,240,0.78)',
+                    lineHeight: 1.4,
                   }}>
-                    {tech.type}
+                    {tech.desc}
                   </div>
-                </motion.div>
+                </div>
+              </motion.div>
+            )
+          })}
+        </motion.div>
+
+        {/* RIGHT: circle of 7 steps. Fixed aspect-ratio container so SVG and
+            absolutely-positioned nodes share the exact same coordinate frame. */}
+        <div style={{
+          position: 'relative',
+          width: '100%',
+          maxWidth: '940px',
+          aspectRatio: '940 / 720',
+          margin: '0 auto',
+        }}>
+          <svg
+            viewBox="0 0 940 720"
+            preserveAspectRatio="none"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+          >
+            <defs>
+              <marker id="step-arrow-blue" viewBox="0 0 10 10" refX="6" refY="5"
+                markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="rgba(143,184,217,0.85)" />
+              </marker>
+              <marker id="step-arrow-coral" viewBox="0 0 10 10" refX="6" refY="5"
+                markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="rgba(212,112,74,0.85)" />
+              </marker>
+              <marker id="step-arrow-green" viewBox="0 0 10 10" refX="6" refY="5"
+                markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="rgba(100,210,165,0.85)" />
+              </marker>
+            </defs>
+
+            {/* Faint guide circle */}
+            <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="none"
+              stroke="rgba(217,188,130,0.1)" strokeWidth="1" strokeDasharray="2 4" />
+
+            {/* Curved arrows along the circle from step i to step i+1.
+                NO arrow from step 6 back to step 0 — the circle stays open. */}
+            {STEPS.map((step, i) => {
+              if (i === STEPS.length - 1) return null
+              const p1 = positions[i]
+              const p2 = positions[i + 1]
+
+              // Trim each end so the arrow doesn't overlap the node card
+              const NODE_RADIUS = 100
+              const dx = p2.x - p1.x
+              const dy = p2.y - p1.y
+              const len = Math.hypot(dx, dy)
+              const ux = dx / len
+              const uy = dy / len
+              const sx = p1.x + ux * NODE_RADIUS
+              const sy = p1.y + uy * NODE_RADIUS
+              const ex = p2.x - ux * NODE_RADIUS
+              const ey = p2.y - uy * NODE_RADIUS
+
+              // Bend the path outward (away from center) so it follows the circle
+              const mx = (sx + ex) / 2
+              const my = (sy + ey) / 2
+              const outX = mx + (mx - cx) * 0.18
+              const outY = my + (my - cy) * 0.18
+
+              const fromVariant = step.variant
+              const toVariant = STEPS[i + 1].variant
+              const arrowMark =
+                fromVariant === 'special' ? 'coral' :
+                toVariant === 'final' ? 'green' :
+                'blue'
+              const strokeColor =
+                fromVariant === 'special' ? 'rgba(212,112,74,0.7)' :
+                toVariant === 'final' ? 'rgba(100,210,165,0.7)' :
+                'rgba(143,184,217,0.65)'
+              const dashArray = fromVariant === 'special' ? '5 4' : '0'
+
+              return (
+                <motion.path
+                  key={i}
+                  d={`M ${sx} ${sy} Q ${outX} ${outY}, ${ex} ${ey}`}
+                  stroke={strokeColor}
+                  strokeWidth="1.6"
+                  fill="none"
+                  markerEnd={`url(#step-arrow-${arrowMark})`}
+                  strokeDasharray={dashArray}
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 1 }}
+                  transition={{ duration: 0.7, delay: 0.6 + i * 0.12 }}
+                />
               )
             })}
-          </div>
-          <div style={{
-            fontFamily: '"DM Sans"',
-            fontSize: '11px',
-            color: 'rgba(200,223,240,0.6)',
-            textAlign: 'center',
-            lineHeight: 1.45,
-            maxWidth: '440px',
-            marginTop: '2px',
-          }}>
-            <strong style={{ color: 'rgba(217,188,130,0.9)' }}>pandas</strong> and <strong style={{ color: 'rgba(217,188,130,0.9)' }}>openpyxl</strong> are Python libraries. <strong style={{ color: 'rgba(217,188,130,0.9)' }}>Git</strong> tracks changes locally; <strong style={{ color: 'rgba(217,188,130,0.9)' }}>GitHub</strong> hosts the repo and shares clean files with the mentors.
-          </div>
-        </motion.div>
+
+            {/* START label near step 0 */}
+            <motion.g
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <rect
+                x={positions[0].x - 36}
+                y={positions[0].y - 110}
+                width="72"
+                height="24"
+                rx="12"
+                fill="rgba(217,188,130,0.14)"
+                stroke="rgba(217,188,130,0.5)"
+                strokeWidth="1"
+                strokeDasharray="3 3"
+              />
+              <text
+                x={positions[0].x}
+                y={positions[0].y - 93}
+                textAnchor="middle"
+                fill="rgba(217,188,130,1)"
+                style={{ fontFamily: '"JetBrains Mono"', fontSize: '12px', letterSpacing: '0.16em', fontWeight: 600 }}
+              >
+                START
+              </text>
+            </motion.g>
+
+            {/* END label near step 6 */}
+            <motion.g
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.6 }}
+            >
+              {/* Position the END label on the outside of step 6 */}
+              {(() => {
+                const last = positions[STEPS.length - 1]
+                // Compute direction from center to last node and push label outward
+                const dx = last.x - cx
+                const dy = last.y - cy
+                const dlen = Math.hypot(dx, dy)
+                const ox = (dx / dlen) * 105
+                const oy = (dy / dlen) * 105
+                const labelX = last.x + ox
+                const labelY = last.y + oy
+                return (
+                  <>
+                    <rect
+                      x={labelX - 30}
+                      y={labelY - 12}
+                      width="60"
+                      height="24"
+                      rx="12"
+                      fill="rgba(100,210,165,0.16)"
+                      stroke="rgba(100,210,165,0.55)"
+                      strokeWidth="1"
+                      strokeDasharray="3 3"
+                    />
+                    <text
+                      x={labelX}
+                      y={labelY + 5}
+                      textAnchor="middle"
+                      fill="rgba(140,235,190,1)"
+                      style={{ fontFamily: '"JetBrains Mono"', fontSize: '12px', letterSpacing: '0.16em', fontWeight: 600 }}
+                    >
+                      END
+                    </text>
+                  </>
+                )
+              })()}
+            </motion.g>
+          </svg>
+
+          {/* Step nodes positioned by percentage of the same 940x720 frame */}
+          {STEPS.map((step, i) => {
+            const p = positions[i]
+            return (
+              <CircleStepNode
+                key={i}
+                step={step}
+                position={{
+                  x: `${(p.x / 940) * 100}%`,
+                  y: `${(p.y / 720) * 100}%`,
+                }}
+              />
+            )
+          })}
+        </div>
       </div>
     </div>
   )

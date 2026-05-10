@@ -76,12 +76,13 @@ export default function Slide3() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '70px 80px 110px',
+      justifyContent: 'center',
+      padding: '60px 80px 100px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '40px', zIndex: 10 }}>
+      <div style={{ textAlign: 'center', marginBottom: '56px', zIndex: 10 }}>
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -129,9 +130,8 @@ export default function Slide3() {
 
       {/* Graph container */}
       <div style={{
-        flex: 1,
         width: '100%',
-        maxWidth: '1200px',
+        maxWidth: '1500px',
         position: 'relative',
         zIndex: 10,
         display: 'flex',
@@ -145,7 +145,7 @@ export default function Slide3() {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            marginBottom: '12px',
+            marginBottom: '20px',
           }}
         >
           <div style={{
@@ -199,13 +199,13 @@ export default function Slide3() {
         </svg>
 
         {/* Spacer to account for root → sources connector */}
-        <div style={{ height: '50px' }} />
+        <div style={{ height: '70px' }} />
 
         {/* 4 source nodes */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '14px',
+          gap: '20px',
           position: 'relative',
           zIndex: 5,
         }}>
@@ -220,44 +220,32 @@ export default function Slide3() {
                 style={{
                   background: src.bg,
                   border: `1.5px solid ${src.border}`,
-                  borderRadius: '14px',
-                  padding: '20px 18px 18px',
+                  borderRadius: '16px',
+                  padding: '28px 22px 26px',
                   backdropFilter: 'blur(8px)',
                   textAlign: 'center',
                 }}
               >
                 <div style={{
-                  width: '46px',
-                  height: '46px',
-                  borderRadius: '10px',
+                  width: '54px',
+                  height: '54px',
+                  borderRadius: '12px',
                   background: src.bg.replace(/[\d.]+\)/, '0.2)'),
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  margin: '0 auto 12px',
+                  margin: '0 auto 14px',
                 }}>
-                  <Icon size={22} color={src.color} />
+                  <Icon size={26} color={src.color} />
                 </div>
                 <div style={{
                   fontFamily: '"Playfair Display"',
-                  fontSize: 'clamp(19px, 1.6vw, 24px)',
+                  fontSize: 'clamp(20px, 1.7vw, 26px)',
                   fontWeight: 600,
                   color: '#F4EFE4',
                   lineHeight: 1.2,
-                  marginBottom: '6px',
                 }}>
                   {src.name}
-                </div>
-                <div style={{
-                  fontFamily: '"DM Sans"',
-                  fontSize: '13px',
-                  letterSpacing: '0.13em',
-                  textTransform: 'uppercase',
-                  color: src.color,
-                  opacity: 0.95,
-                  fontWeight: 500,
-                }}>
-                  {src.type}
                 </div>
               </motion.div>
             )
@@ -265,7 +253,7 @@ export default function Slide3() {
         </div>
 
         {/* Connector area between sources and structure level */}
-        <div style={{ position: 'relative', height: '40px' }}>
+        <div style={{ position: 'relative', height: '60px' }}>
           <svg
             style={{
               position: 'absolute',
@@ -275,7 +263,7 @@ export default function Slide3() {
               pointerEvents: 'none',
             }}
             preserveAspectRatio="none"
-            viewBox="0 0 800 40"
+            viewBox="0 0 800 60"
           >
             {/* Lines from each simple source down to its single child label */}
             {[100, 300, 700].map((x, i) => (
@@ -284,7 +272,7 @@ export default function Slide3() {
                 x1={x}
                 y1={0}
                 x2={x}
-                y2={40}
+                y2={60}
                 stroke="rgba(143,184,217,0.4)"
                 strokeWidth="1"
                 strokeDasharray="3 3"
@@ -304,7 +292,7 @@ export default function Slide3() {
               return (
                 <motion.path
                   key={idx}
-                  d={curve(500, 0, xEnd, 40)}
+                  d={curve(500, 0, xEnd, 60)}
                   stroke="rgba(212,112,74,0.45)"
                   strokeWidth="1"
                   fill="none"
@@ -425,7 +413,7 @@ export default function Slide3() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.0 }}
           style={{
-            marginTop: '24px',
+            marginTop: '40px',
             display: 'flex',
             justifyContent: 'center',
             zIndex: 10,
@@ -483,7 +471,7 @@ export default function Slide3() {
             zIndex: 10,
           }}
         >
-          Total: <strong style={{ color: 'rgba(217,188,130,1)', fontWeight: 600 }}>15 raw Excel files</strong> · <strong style={{ color: 'rgba(217,188,130,1)', fontWeight: 600 }}>~39 sheets</strong> · all entered by hand in the field
+          Total: <strong style={{ color: 'rgba(217,188,130,1)', fontWeight: 600 }}>15 raw Excel files</strong> · <strong style={{ color: 'rgba(217,188,130,1)', fontWeight: 600 }}>~39 sheets</strong> · most exported from forms, the Winter Bird Survey is hand-entered
         </motion.div>
       </div>
     </div>

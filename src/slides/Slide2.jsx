@@ -97,13 +97,13 @@ export default function Slide2() {
       background: 'linear-gradient(160deg, #061525 0%, #0B2340 50%, #0E1E3A 100%)',
       display: 'flex',
       padding: '70px 80px 110px',
-      gap: '60px',
+      gap: '90px',
     }}>
       <Birds density="sparse" />
 
-      {/* LEFT COLUMN: Photo + map */}
+      {/* LEFT COLUMN: Photo + map (slightly wider so left edge isn't empty) */}
       <div style={{
-        flex: '0 0 40%',
+        flex: '0 0 44%',
         display: 'flex',
         flexDirection: 'column',
         gap: '24px',

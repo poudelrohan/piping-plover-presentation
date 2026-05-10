@@ -57,15 +57,15 @@ const CYCLE_STEPS = [
   },
 ]
 
-const RADIUS = 175
-const CENTER = 260
+const RADIUS = 135
+const CENTER = 200
 
 function CycleNode({ step }) {
   const Icon = step.icon
   const angleRad = (step.angle * Math.PI) / 180
   const x = CENTER + RADIUS * Math.cos(angleRad)
   const y = CENTER + RADIUS * Math.sin(angleRad)
-  const size = step.isMain ? 155 : 132
+  const size = step.isMain ? 125 : 105
 
   return (
     <motion.div
@@ -92,24 +92,24 @@ function CycleNode({ step }) {
         zIndex: 10,
       }}
     >
-      <Icon size={step.isMain ? 28 : 24} color={step.color} />
+      <Icon size={step.isMain ? 22 : 19} color={step.color} />
       <div style={{
         fontFamily: '"Playfair Display"',
-        fontSize: step.isMain ? '17px' : '15px',
+        fontSize: step.isMain ? '14px' : '12.5px',
         fontWeight: 600,
         color: '#F4EFE4',
-        marginTop: '6px',
+        marginTop: '4px',
         lineHeight: 1.15,
       }}>
         {step.label}
       </div>
       <div style={{
         fontFamily: '"DM Sans"',
-        fontSize: '12px',
+        fontSize: '10px',
         color: 'rgba(200,223,240,0.88)',
-        marginTop: '4px',
-        lineHeight: 1.3,
-        padding: '0 8px',
+        marginTop: '3px',
+        lineHeight: 1.25,
+        padding: '0 6px',
       }}>
         {step.subtitle}
       </div>
@@ -127,12 +127,13 @@ export default function Slide6() {
       background: 'linear-gradient(160deg, #061525 0%, #0B2340 50%, #0E1E3A 100%)',
       display: 'flex',
       flexDirection: 'column',
-      padding: '70px 80px 110px',
+      alignItems: 'center',
+      padding: '50px 80px 90px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '32px', zIndex: 10 }}>
+      <div style={{ textAlign: 'center', marginBottom: '20px', zIndex: 10 }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -180,23 +181,26 @@ export default function Slide6() {
         </motion.p>
       </div>
 
-      {/* Main content: cycle on left, meeting structure on right */}
+      {/* Main content: cycle in middle, meeting card below */}
       <div style={{
         flex: 1,
-        display: 'grid',
-        gridTemplateColumns: '520px 1fr',
-        gap: '50px',
+        display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
+        gap: '24px',
         zIndex: 10,
+        width: '100%',
       }}>
-        {/* LEFT: Cycle diagram */}
+        {/* Cycle diagram (centered horizontally) */}
         <div style={{
           position: 'relative',
-          width: '520px',
-          height: '520px',
+          width: '400px',
+          height: '400px',
+          flexShrink: 0,
         }}>
           {/* Background circle */}
-          <svg viewBox="0 0 520 520" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+          <svg viewBox="0 0 400 400" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
             <defs>
               <marker id="cycle-arrow" viewBox="0 0 10 10" refX="6" refY="5"
                 markerWidth="5" markerHeight="5" orient="auto-start-reverse">
@@ -231,7 +235,7 @@ export default function Slide6() {
             })}
 
             {/* Inner repeat circle — sized to comfortably hold the icon + label */}
-            <circle cx={CENTER} cy={CENTER} r="56" fill="rgba(217,188,130,0.1)"
+            <circle cx={CENTER} cy={CENTER} r="44" fill="rgba(217,188,130,0.1)"
               stroke="rgba(217,188,130,0.4)" strokeWidth="1.2" strokeDasharray="2.5 2.5" />
           </svg>
 
@@ -269,8 +273,8 @@ export default function Slide6() {
           {CYCLE_STEPS.map(step => <CycleNode key={step.id} step={step} />)}
         </div>
 
-        {/* RIGHT: Meeting two-part structure + workflow notes */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        {/* BELOW: Meeting two-part structure */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%', maxWidth: '1100px' }}>
           {/* Meeting card */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -312,7 +316,7 @@ export default function Slide6() {
               </span>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
               {[
                 {
                   icon: Eye,

@@ -93,39 +93,42 @@ export default function Slide1() {
       <Birds density="normal" />
       <HorizonWave />
 
-      {/* Symposium label top-right */}
+      {/* Symposium label top-right (single line) */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.3 }}
         style={{
           position: 'absolute',
-          top: '44px',
+          top: '54px',
           right: '48px',
-          textAlign: 'right',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '14px',
           zIndex: 20,
+          whiteSpace: 'nowrap',
         }}
       >
-        <div style={{
+        <span style={{
           fontFamily: '"DM Sans"',
           fontSize: '13px',
           letterSpacing: '0.22em',
           textTransform: 'uppercase',
           color: 'rgba(232,145,110,0.95)',
-          marginBottom: '4px',
-          fontWeight: 500,
+          fontWeight: 600,
         }}>
           Spring 2026
-        </div>
-        <div style={{
+        </span>
+        <span style={{ color: 'rgba(217,188,130,0.4)', fontSize: '11px' }}>◆</span>
+        <span style={{
           fontFamily: '"DM Sans"',
           fontSize: '15px',
-          color: 'rgba(217,188,130,0.7)',
+          color: 'rgba(217,188,130,0.85)',
           letterSpacing: '0.03em',
           fontWeight: 400,
         }}>
           USFWS Student Symposium
-        </div>
+        </span>
       </motion.div>
 
       {/* Decorative horizontal rule */}

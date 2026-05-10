@@ -1,31 +1,25 @@
 import { motion } from 'framer-motion'
-import { TrendingUp, MapPinned, Calendar, Layers3, ArrowUpRight } from 'lucide-react'
+import { Map, Compass, Satellite, Layers, ExternalLink } from 'lucide-react'
 import Birds from '../components/Birds'
 
-const QUESTIONS = [
+const TOOLS = [
   {
-    icon: TrendingUp,
-    category: 'Population Trends',
-    question: 'Are Piping Plover populations growing or declining at specific Florida wintering sites?',
-    payoff: 'Multi-year counts, finally on a shared scale.',
+    icon: Compass,
+    name: 'Bird Migration Explorer',
+    org: 'Audubon · built on ArcGIS Online',
+    desc: 'Interactive maps showing where birds travel across the year, including critical wintering and breeding sites.',
   },
   {
-    icon: MapPinned,
-    category: 'Site Fidelity',
-    question: 'Which sites consistently host the same banded individuals year after year?',
-    payoff: 'Identify high-priority beaches that need ongoing protection.',
+    icon: Layers,
+    name: 'IPaC',
+    org: 'Information for Planning and Consultation',
+    desc: 'USFWS tool that flags how proposed projects might affect listed species and their habitats.',
   },
   {
-    icon: Layers3,
-    category: 'Detection & Coverage',
-    question: 'How do observed counts compare across surveys at the same site and time?',
-    payoff: 'Understand which programs catch what, and what they miss.',
-  },
-  {
-    icon: Calendar,
-    category: 'Seasonal Patterns',
-    question: 'When do wintering numbers peak, and how does that vary year to year?',
-    payoff: 'Time conservation actions to when the birds are present.',
+    icon: Satellite,
+    name: 'Migratory Bird Data Center',
+    org: 'USFWS · GPS telemetry analysis',
+    desc: 'Analyzes tracking data to inform conservation planning and population monitoring.',
   },
 ]
 
@@ -40,12 +34,12 @@ export default function Slide7() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '70px 80px 110px',
+      padding: '60px 80px 100px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '44px', zIndex: 10 }}>
+      <div style={{ textAlign: 'center', marginBottom: '36px', zIndex: 10 }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -60,7 +54,7 @@ export default function Slide7() {
             fontWeight: 500,
           }}
         >
-          Where This Leads
+          Where The Clean Data Goes
         </motion.div>
         <motion.h2
           initial={{ opacity: 0, y: 15 }}
@@ -74,7 +68,7 @@ export default function Slide7() {
             lineHeight: 1.15,
           }}
         >
-          Now the real biology questions <em style={{ color: 'rgba(217,188,130,0.95)', fontStyle: 'italic' }}>can be asked</em>
+          Feeding into the tools that <em style={{ color: 'rgba(217,188,130,0.95)', fontStyle: 'italic' }}>visualize bird data</em>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
@@ -84,39 +78,72 @@ export default function Slide7() {
             fontFamily: '"DM Sans"',
             fontSize: 'clamp(17px, 1.5vw, 20px)',
             color: 'rgba(200,223,240,0.85)',
-            marginTop: '12px',
-            maxWidth: '900px',
+            marginTop: '14px',
+            maxWidth: '1100px',
           }}
         >
-          A clean, unified dataset opens up questions that used to take weeks of manual work.
+          The U.S. Fish & Wildlife Service and partners use ArcGIS and other geospatial platforms to map and analyze bird tracking data. A clean, standardized dataset makes feeding into these tools possible.
         </motion.p>
       </div>
 
-      {/* Question cards 2x2 */}
+      {/* ArcGIS pill — the foundation tech */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '14px',
+          padding: '12px 24px',
+          background: 'rgba(217,188,130,0.12)',
+          border: '1.5px solid rgba(217,188,130,0.45)',
+          borderRadius: '32px',
+          marginBottom: '36px',
+          backdropFilter: 'blur(8px)',
+          zIndex: 10,
+        }}
+      >
+        <Map size={20} color="rgba(217,188,130,1)" />
+        <span style={{
+          fontFamily: '"DM Sans"',
+          fontSize: '15px',
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: 'rgba(217,188,130,1)',
+          fontWeight: 600,
+        }}>
+          Powered by ArcGIS
+        </span>
+      </motion.div>
+
+      {/* 3 tool cards */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
+        gridTemplateColumns: 'repeat(3, 1fr)',
         gap: '24px',
         width: '100%',
-        maxWidth: '1300px',
+        maxWidth: '1400px',
         zIndex: 10,
       }}>
-        {QUESTIONS.map((q, i) => {
-          const Icon = q.icon
+        {TOOLS.map((tool, i) => {
+          const Icon = tool.icon
           return (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 + i * 0.12, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.6, delay: 0.55 + i * 0.15, ease: [0.4, 0, 0.2, 1] }}
               style={{
                 background: 'rgba(11,35,64,0.6)',
-                border: '1.5px solid rgba(143,184,217,0.25)',
+                border: '1.5px solid rgba(143,184,217,0.28)',
                 borderRadius: '16px',
-                padding: '30px 34px',
+                padding: '28px 30px',
                 backdropFilter: 'blur(10px)',
                 position: 'relative',
                 overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
               {/* Subtle glow */}
@@ -126,87 +153,66 @@ export default function Slide7() {
                 right: '-30px',
                 width: '160px',
                 height: '160px',
-                background: 'radial-gradient(circle, rgba(217,188,130,0.08) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(143,184,217,0.08) 0%, transparent 70%)',
                 pointerEvents: 'none',
               }} />
 
-              {/* Top: icon + category */}
+              {/* Top: icon + external link mark */}
               <div style={{
                 display: 'flex',
-                alignItems: 'center',
                 justifyContent: 'space-between',
-                marginBottom: '20px',
+                alignItems: 'flex-start',
+                marginBottom: '18px',
               }}>
                 <div style={{
+                  width: '52px',
+                  height: '52px',
+                  borderRadius: '12px',
+                  background: 'rgba(143,184,217,0.18)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '14px',
+                  justifyContent: 'center',
                 }}>
-                  <div style={{
-                    width: '46px',
-                    height: '46px',
-                    borderRadius: '11px',
-                    background: 'rgba(217,188,130,0.16)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                    <Icon size={22} color="rgba(217,188,130,1)" />
-                  </div>
-                  <span style={{
-                    fontFamily: '"DM Sans"',
-                    fontSize: '14px',
-                    letterSpacing: '0.18em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(217,188,130,1)',
-                    fontWeight: 600,
-                  }}>
-                    {q.category}
-                  </span>
+                  <Icon size={24} color="rgba(143,184,217,1)" />
                 </div>
-                <ArrowUpRight size={20} color="rgba(143,184,217,0.55)" />
+                <ExternalLink size={18} color="rgba(143,184,217,0.45)" />
               </div>
 
-              {/* Question */}
+              {/* Tool name */}
               <div style={{
-                fontFamily: '"DM Sans", system-ui, sans-serif',
-                fontSize: 'clamp(20px, 1.8vw, 24px)',
-                fontWeight: 500,
+                fontFamily: '"Playfair Display"',
+                fontSize: 'clamp(20px, 1.7vw, 24px)',
+                fontWeight: 600,
                 color: '#F4EFE4',
-                lineHeight: 1.4,
-                marginBottom: '18px',
-                letterSpacing: '-0.005em',
+                lineHeight: 1.2,
+                marginBottom: '6px',
               }}>
-                {q.question}
+                {tool.name}
               </div>
 
-              {/* Payoff */}
+              {/* Org */}
               <div style={{
-                paddingTop: '16px',
-                borderTop: '1px dashed rgba(143,184,217,0.28)',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '10px',
+                fontFamily: '"DM Sans"',
+                fontSize: '12.5px',
+                letterSpacing: '0.06em',
+                color: 'rgba(217,188,130,0.85)',
+                marginBottom: '16px',
+                fontStyle: 'italic',
               }}>
-                <span style={{
-                  fontFamily: '"DM Sans"',
-                  fontSize: '18px',
-                  color: 'rgba(212,112,74,1)',
-                  flexShrink: 0,
-                  fontWeight: 600,
-                }}>
-                  →
-                </span>
-                <span style={{
-                  fontFamily: '"DM Sans"',
-                  fontSize: '16px',
-                  color: 'rgba(200,223,240,0.92)',
-                  lineHeight: 1.5,
-                  fontWeight: 400,
-                }}>
-                  {q.payoff}
-                </span>
+                {tool.org}
               </div>
+
+              {/* Description */}
+              <p style={{
+                fontFamily: '"DM Sans"',
+                fontSize: '15px',
+                color: 'rgba(200,223,240,0.88)',
+                lineHeight: 1.55,
+                fontWeight: 400,
+                flex: 1,
+              }}>
+                {tool.desc}
+              </p>
             </motion.div>
           )
         })}
@@ -216,9 +222,9 @@ export default function Slide7() {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.0 }}
+        transition={{ delay: 1.2 }}
         style={{
-          marginTop: '44px',
+          marginTop: '36px',
           display: 'flex',
           alignItems: 'center',
           gap: '20px',
@@ -229,14 +235,13 @@ export default function Slide7() {
         <p style={{
           fontFamily: '"DM Sans", system-ui, sans-serif',
           fontWeight: 500,
-          fontSize: 'clamp(18px, 1.7vw, 22px)',
-          color: 'rgba(217,188,130,1)',
+          fontSize: 'clamp(16px, 1.5vw, 19px)',
+          color: 'rgba(217,188,130,0.95)',
           textAlign: 'center',
-          maxWidth: '800px',
+          maxWidth: '780px',
           lineHeight: 1.5,
-          letterSpacing: '0.01em',
         }}>
-          Clean data is the foundation. Now the real biology questions can be asked, and answered.
+          Clean data is what makes any of this possible.
         </p>
         <div style={{ height: '1px', width: '80px', background: 'linear-gradient(90deg, rgba(217,188,130,0.5), transparent)' }} />
       </motion.div>

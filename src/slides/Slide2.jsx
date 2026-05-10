@@ -1,0 +1,339 @@
+import { motion } from 'framer-motion'
+import { AlertTriangle, Waves, Home, BarChart3 } from 'lucide-react'
+import Birds from '../components/Birds'
+
+// Stylized US migration map
+const MigrationMap = () => (
+  <svg viewBox="0 0 400 240" style={{ width: '100%', height: 'auto' }}>
+    <defs>
+      <linearGradient id="breedingGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="rgba(143,184,217,0.55)" />
+        <stop offset="100%" stopColor="rgba(143,184,217,0.18)" />
+      </linearGradient>
+      <linearGradient id="winterGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="rgba(212,112,74,0.18)" />
+        <stop offset="100%" stopColor="rgba(212,112,74,0.55)" />
+      </linearGradient>
+      <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5"
+        markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="rgba(217,188,130,0.7)" />
+      </marker>
+    </defs>
+
+    {/* Simplified US outline */}
+    <path
+      d="M40,90 L60,75 L90,68 L130,62 L175,58 L220,55 L265,57 L305,62 L340,68 L360,80
+         L362,108 L355,135 L345,158 L325,175 L300,185 L270,195 L240,200 L215,210 L190,212
+         L170,210 L155,205 L140,200 L125,195 L110,188 L95,178 L78,165 L62,150 L48,130 L40,108 Z"
+      fill="rgba(255,255,255,0.04)"
+      stroke="rgba(200,223,240,0.25)"
+      strokeWidth="1"
+    />
+    {/* Florida hook */}
+    <path
+      d="M285,178 L295,200 L300,218 L295,225 L285,222 L278,210 L272,195 Z"
+      fill="rgba(212,112,74,0.18)"
+      stroke="rgba(212,112,74,0.55)"
+      strokeWidth="1.2"
+    />
+
+    {/* Breeding zones (north) */}
+    <ellipse cx="180" cy="78" rx="55" ry="14" fill="url(#breedingGrad)" stroke="rgba(143,184,217,0.5)" strokeWidth="1" strokeDasharray="3 2" />
+    <ellipse cx="100" cy="92" rx="32" ry="12" fill="url(#breedingGrad)" stroke="rgba(143,184,217,0.4)" strokeWidth="1" strokeDasharray="3 2" />
+    <ellipse cx="285" cy="92" rx="38" ry="13" fill="url(#breedingGrad)" stroke="rgba(143,184,217,0.4)" strokeWidth="1" strokeDasharray="3 2" />
+
+    {/* Wintering zones (south) */}
+    <ellipse cx="225" cy="195" rx="80" ry="12" fill="url(#winterGrad)" stroke="rgba(212,112,74,0.5)" strokeWidth="1" strokeDasharray="3 2" />
+
+    {/* Migration arrows */}
+    <path d="M180,90 Q175,140 215,185" stroke="rgba(217,188,130,0.55)" strokeWidth="1.4" fill="none" strokeDasharray="4 3" markerEnd="url(#arrowhead)" />
+    <path d="M100,100 Q140,150 200,190" stroke="rgba(217,188,130,0.45)" strokeWidth="1.2" fill="none" strokeDasharray="4 3" markerEnd="url(#arrowhead)" />
+    <path d="M285,100 Q280,140 250,185" stroke="rgba(217,188,130,0.45)" strokeWidth="1.2" fill="none" strokeDasharray="4 3" markerEnd="url(#arrowhead)" />
+
+    {/* Labels */}
+    <text x="180" y="46" textAnchor="middle" fill="rgba(143,184,217,0.85)"
+      style={{ fontFamily: '"DM Sans"', fontSize: '9px', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+      Breeding Range
+    </text>
+    <text x="225" y="232" textAnchor="middle" fill="rgba(232,145,110,0.9)"
+      style={{ fontFamily: '"DM Sans"', fontSize: '9px', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+      Wintering Range · Florida
+    </text>
+
+    {/* Florida pin */}
+    <circle cx="290" cy="205" r="3" fill="rgba(232,145,110,1)" />
+    <circle cx="290" cy="205" r="6" fill="none" stroke="rgba(232,145,110,0.6)" strokeWidth="1">
+      <animate attributeName="r" from="3" to="14" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.8" to="0" dur="2s" repeatCount="indefinite" />
+    </circle>
+  </svg>
+)
+
+const FACTS = [
+  {
+    icon: Waves,
+    label: 'Migration',
+    text: 'They breed in the northern US, Canada, and the Great Lakes. They winter along the US Atlantic coast, Gulf coast, Caribbean, and Mexico. Florida is one of the most important wintering destinations.',
+  },
+  {
+    icon: Home,
+    label: 'Main Threats',
+    text: 'Habitat loss from coastal development. Beach disturbance from foot traffic, vehicles, and dogs that flush birds from feeding and roosting sites.',
+  },
+  {
+    icon: BarChart3,
+    label: 'Why the Data Matters',
+    text: 'Tracking population changes at wintering sites helps USFWS identify which beaches need protection and whether recovery efforts are working.',
+  },
+]
+
+export default function Slide2() {
+  return (
+    <div style={{
+      width: '100%',
+      height: '100%',
+      position: 'relative',
+      overflow: 'hidden',
+      background: 'linear-gradient(160deg, #061525 0%, #0B2340 50%, #0E1E3A 100%)',
+      display: 'flex',
+      padding: '50px 60px 80px',
+      gap: '40px',
+    }}>
+      <Birds density="sparse" />
+
+      {/* LEFT COLUMN: Photo + map */}
+      <div style={{
+        flex: '0 0 38%',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        zIndex: 10,
+      }}>
+        {/* Photo container */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          style={{
+            position: 'relative',
+            borderRadius: '14px',
+            overflow: 'hidden',
+            border: '1px solid rgba(217,188,130,0.2)',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+            aspectRatio: '4 / 3',
+          }}
+        >
+          <img
+            src="/images/piping-plover.jpg"
+            alt="Piping Plover (Charadrius melodus)"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+          />
+          {/* Photo overlay gradient */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(180deg, transparent 60%, rgba(6,21,37,0.85) 100%)',
+            pointerEvents: 'none',
+          }} />
+          {/* Threatened badge top-left */}
+          <div style={{
+            position: 'absolute',
+            top: '12px',
+            left: '12px',
+            background: 'rgba(212,112,74,0.92)',
+            backdropFilter: 'blur(6px)',
+            borderRadius: '6px',
+            padding: '5px 10px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '5px',
+            fontFamily: '"DM Sans"',
+            fontSize: '10px',
+            color: '#F4EFE4',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            fontWeight: 500,
+          }}>
+            <AlertTriangle size={11} />
+            Federally Threatened
+          </div>
+          {/* Caption bottom */}
+          <div style={{
+            position: 'absolute',
+            bottom: '12px',
+            left: '14px',
+            right: '14px',
+          }}>
+            <div style={{
+              fontFamily: '"Playfair Display"',
+              fontSize: '14px',
+              fontStyle: 'italic',
+              color: 'rgba(217,188,130,0.95)',
+              fontWeight: 500,
+            }}>
+              Charadrius melodus
+            </div>
+            <div style={{
+              fontFamily: '"DM Sans"',
+              fontSize: '10px',
+              color: 'rgba(200,223,240,0.5)',
+              marginTop: '2px',
+              letterSpacing: '0.04em',
+            }}>
+              Photo: Wikimedia Commons (public domain)
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Migration map */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          style={{
+            background: 'rgba(11,35,64,0.5)',
+            border: '1px solid rgba(143,184,217,0.15)',
+            borderRadius: '14px',
+            padding: '14px 18px',
+            backdropFilter: 'blur(8px)',
+          }}
+        >
+          <div style={{
+            fontFamily: '"DM Sans"',
+            fontSize: '10px',
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'rgba(217,188,130,0.55)',
+            marginBottom: '8px',
+          }}>
+            US Migration Pattern
+          </div>
+          <MigrationMap />
+        </motion.div>
+      </div>
+
+      {/* RIGHT COLUMN: Text content */}
+      <div style={{
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        zIndex: 10,
+      }}>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          style={{
+            fontFamily: '"DM Sans"',
+            fontSize: '11px',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            color: 'rgba(212,112,74,0.7)',
+            marginBottom: '14px',
+          }}
+        >
+          About the Species
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          style={{
+            fontFamily: '"Playfair Display"',
+            fontSize: 'clamp(30px, 3.6vw, 46px)',
+            fontWeight: 600,
+            color: '#F4EFE4',
+            lineHeight: 1.15,
+            marginBottom: '14px',
+          }}
+        >
+          A small shorebird with<br />
+          <em style={{ color: 'rgba(217,188,130,0.95)', fontStyle: 'italic' }}>a long migration</em>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          style={{
+            fontFamily: '"DM Sans"',
+            fontSize: 'clamp(15px, 1.5vw, 17px)',
+            color: 'rgba(200,223,240,0.85)',
+            lineHeight: 1.65,
+            marginBottom: '28px',
+            maxWidth: '600px',
+          }}
+        >
+          The Piping Plover is a small, sand-colored shorebird that breeds across northern North America and migrates south every winter, including to Florida's beaches.
+        </motion.p>
+
+        {/* Fact cards stacked */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', maxWidth: '600px' }}>
+          {FACTS.map((fact, i) => {
+            const Icon = fact.icon
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.55 + i * 0.15 }}
+                style={{
+                  display: 'flex',
+                  gap: '14px',
+                  alignItems: 'flex-start',
+                  padding: '12px 16px',
+                  background: 'rgba(22,61,106,0.25)',
+                  border: '1px solid rgba(143,184,217,0.12)',
+                  borderRadius: '10px',
+                  borderLeft: '3px solid rgba(212,112,74,0.5)',
+                }}
+              >
+                <div style={{
+                  flexShrink: 0,
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '8px',
+                  background: 'rgba(212,112,74,0.12)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginTop: '2px',
+                }}>
+                  <Icon size={15} color="rgba(232,145,110,0.85)" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{
+                    fontFamily: '"DM Sans"',
+                    fontSize: '11px',
+                    letterSpacing: '0.16em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(232,145,110,0.95)',
+                    marginBottom: '4px',
+                  }}>
+                    {fact.label}
+                  </div>
+                  <p style={{
+                    fontFamily: '"DM Sans"',
+                    fontSize: 'clamp(13px, 1.25vw, 15px)',
+                    color: 'rgba(200,223,240,0.88)',
+                    lineHeight: 1.55,
+                    fontWeight: 400,
+                  }}>
+                    {fact.text}
+                  </p>
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+}

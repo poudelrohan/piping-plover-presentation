@@ -96,17 +96,17 @@ export default function Slide2() {
       overflow: 'hidden',
       background: 'linear-gradient(160deg, #061525 0%, #0B2340 50%, #0E1E3A 100%)',
       display: 'flex',
-      padding: '50px 60px 80px',
-      gap: '40px',
+      padding: '70px 80px 110px',
+      gap: '60px',
     }}>
       <Birds density="sparse" />
 
       {/* LEFT COLUMN: Photo + map */}
       <div style={{
-        flex: '0 0 38%',
+        flex: '0 0 40%',
         display: 'flex',
         flexDirection: 'column',
-        gap: '20px',
+        gap: '24px',
         zIndex: 10,
       }}>
         {/* Photo container */}
@@ -143,46 +143,46 @@ export default function Slide2() {
           {/* Threatened badge top-left */}
           <div style={{
             position: 'absolute',
-            top: '12px',
-            left: '12px',
-            background: 'rgba(212,112,74,0.92)',
+            top: '16px',
+            left: '16px',
+            background: 'rgba(212,112,74,0.95)',
             backdropFilter: 'blur(6px)',
-            borderRadius: '6px',
-            padding: '5px 10px',
+            borderRadius: '8px',
+            padding: '8px 14px',
             display: 'flex',
             alignItems: 'center',
-            gap: '5px',
+            gap: '7px',
             fontFamily: '"DM Sans"',
-            fontSize: '10px',
+            fontSize: '13px',
             color: '#F4EFE4',
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            fontWeight: 500,
+            fontWeight: 600,
           }}>
-            <AlertTriangle size={11} />
+            <AlertTriangle size={15} />
             Federally Threatened
           </div>
           {/* Caption bottom */}
           <div style={{
             position: 'absolute',
-            bottom: '12px',
-            left: '14px',
-            right: '14px',
+            bottom: '16px',
+            left: '18px',
+            right: '18px',
           }}>
             <div style={{
               fontFamily: '"Playfair Display"',
-              fontSize: '14px',
+              fontSize: '20px',
               fontStyle: 'italic',
-              color: 'rgba(217,188,130,0.95)',
+              color: 'rgba(217,188,130,1)',
               fontWeight: 500,
             }}>
               Charadrius melodus
             </div>
             <div style={{
               fontFamily: '"DM Sans"',
-              fontSize: '10px',
-              color: 'rgba(200,223,240,0.5)',
-              marginTop: '2px',
+              fontSize: '12px',
+              color: 'rgba(200,223,240,0.7)',
+              marginTop: '4px',
               letterSpacing: '0.04em',
             }}>
               Photo: Wikimedia Commons (public domain)
@@ -205,11 +205,12 @@ export default function Slide2() {
         >
           <div style={{
             fontFamily: '"DM Sans"',
-            fontSize: '10px',
-            letterSpacing: '0.18em',
+            fontSize: '13px',
+            letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: 'rgba(217,188,130,0.55)',
-            marginBottom: '8px',
+            color: 'rgba(217,188,130,0.85)',
+            marginBottom: '12px',
+            fontWeight: 500,
           }}>
             US Migration Pattern
           </div>
@@ -231,11 +232,12 @@ export default function Slide2() {
           transition={{ duration: 0.6, delay: 0.1 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: '11px',
-            letterSpacing: '0.2em',
+            fontSize: '14px',
+            letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'rgba(212,112,74,0.7)',
-            marginBottom: '14px',
+            color: 'rgba(232,145,110,0.95)',
+            marginBottom: '20px',
+            fontWeight: 500,
           }}
         >
           About the Species
@@ -247,11 +249,11 @@ export default function Slide2() {
           transition={{ duration: 0.7, delay: 0.25 }}
           style={{
             fontFamily: '"Playfair Display"',
-            fontSize: 'clamp(30px, 3.6vw, 46px)',
+            fontSize: 'clamp(40px, 4.4vw, 60px)',
             fontWeight: 600,
             color: '#F4EFE4',
-            lineHeight: 1.15,
-            marginBottom: '14px',
+            lineHeight: 1.1,
+            marginBottom: '20px',
           }}
         >
           A small shorebird with<br />
@@ -264,18 +266,18 @@ export default function Slide2() {
           transition={{ duration: 0.7, delay: 0.4 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: 'clamp(15px, 1.5vw, 17px)',
-            color: 'rgba(200,223,240,0.85)',
-            lineHeight: 1.65,
-            marginBottom: '28px',
-            maxWidth: '600px',
+            fontSize: 'clamp(18px, 1.7vw, 22px)',
+            color: 'rgba(200,223,240,0.9)',
+            lineHeight: 1.6,
+            marginBottom: '36px',
+            maxWidth: '720px',
           }}
         >
           The Piping Plover is a small, sand-colored shorebird that breeds across northern North America and migrates south every winter, including to Florida's beaches.
         </motion.p>
 
         {/* Fact cards stacked */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', maxWidth: '600px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', maxWidth: '760px' }}>
           {FACTS.map((fact, i) => {
             const Icon = fact.icon
             return (
@@ -286,43 +288,44 @@ export default function Slide2() {
                 transition={{ duration: 0.6, delay: 0.55 + i * 0.15 }}
                 style={{
                   display: 'flex',
-                  gap: '14px',
+                  gap: '18px',
                   alignItems: 'flex-start',
-                  padding: '12px 16px',
-                  background: 'rgba(22,61,106,0.25)',
-                  border: '1px solid rgba(143,184,217,0.12)',
-                  borderRadius: '10px',
-                  borderLeft: '3px solid rgba(212,112,74,0.5)',
+                  padding: '18px 22px',
+                  background: 'rgba(22,61,106,0.3)',
+                  border: '1px solid rgba(143,184,217,0.18)',
+                  borderRadius: '12px',
+                  borderLeft: '4px solid rgba(212,112,74,0.6)',
                 }}
               >
                 <div style={{
                   flexShrink: 0,
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '8px',
-                  background: 'rgba(212,112,74,0.12)',
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
+                  background: 'rgba(212,112,74,0.18)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginTop: '2px',
                 }}>
-                  <Icon size={15} color="rgba(232,145,110,0.85)" />
+                  <Icon size={20} color="rgba(232,145,110,1)" />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{
                     fontFamily: '"DM Sans"',
-                    fontSize: '11px',
-                    letterSpacing: '0.16em',
+                    fontSize: '13px',
+                    letterSpacing: '0.18em',
                     textTransform: 'uppercase',
-                    color: 'rgba(232,145,110,0.95)',
-                    marginBottom: '4px',
+                    color: 'rgba(232,145,110,1)',
+                    marginBottom: '6px',
+                    fontWeight: 600,
                   }}>
                     {fact.label}
                   </div>
                   <p style={{
                     fontFamily: '"DM Sans"',
-                    fontSize: 'clamp(13px, 1.25vw, 15px)',
-                    color: 'rgba(200,223,240,0.88)',
+                    fontSize: 'clamp(15px, 1.4vw, 18px)',
+                    color: 'rgba(200,223,240,0.92)',
                     lineHeight: 1.55,
                     fontWeight: 400,
                   }}>

@@ -104,29 +104,29 @@ function StepNode({ step, isLast }) {
       <div style={{
         display: 'flex',
         background: c.bg,
-        border: `1px solid ${c.border}`,
-        borderRadius: '10px',
+        border: `1.5px solid ${c.border}`,
+        borderRadius: '12px',
         overflow: 'hidden',
         backdropFilter: 'blur(8px)',
         position: 'relative',
-        width: '170px',
+        width: '195px',
       }}>
         {/* Special "DB3 only" tag */}
         {step.note && (
           <div style={{
             position: 'absolute',
-            top: '-9px',
+            top: '-12px',
             left: '50%',
             transform: 'translateX(-50%)',
             background: 'rgba(212,112,74,0.95)',
-            borderRadius: '20px',
-            padding: '1px 8px',
+            borderRadius: '24px',
+            padding: '3px 12px',
             fontFamily: '"DM Sans"',
-            fontSize: '8px',
-            letterSpacing: '0.12em',
+            fontSize: '11px',
+            letterSpacing: '0.14em',
             textTransform: 'uppercase',
             color: '#F4EFE4',
-            fontWeight: 500,
+            fontWeight: 600,
             whiteSpace: 'nowrap',
             zIndex: 5,
           }}>
@@ -137,47 +137,47 @@ function StepNode({ step, isLast }) {
         {/* Data section */}
         <div style={{
           flex: 1,
-          padding: '12px 10px 10px 12px',
+          padding: '16px 14px 14px 16px',
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '180px',
+          minHeight: '220px',
         }}>
           {/* Header: number + icon */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginBottom: '8px',
+            marginBottom: '10px',
           }}>
             <div style={{
               fontFamily: '"JetBrains Mono"',
-              fontSize: '12.5px',
+              fontSize: '15px',
               color: c.accent,
-              opacity: 0.85,
-              fontWeight: 500,
+              opacity: 1,
+              fontWeight: 600,
             }}>
               .{step.num}
             </div>
             <div style={{
-              width: '26px',
-              height: '26px',
-              borderRadius: '6px',
+              width: '32px',
+              height: '32px',
+              borderRadius: '8px',
               background: c.iconBg,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <Icon size={14} color={c.accent} />
+              <Icon size={17} color={c.accent} />
             </div>
           </div>
 
           {/* Step name */}
           <div style={{
             fontFamily: '"Playfair Display"',
-            fontSize: '15px',
+            fontSize: '18px',
             fontWeight: 600,
             color: '#F4EFE4',
-            marginBottom: '7px',
+            marginBottom: '8px',
             lineHeight: 1.2,
           }}>
             {step.name}
@@ -186,10 +186,10 @@ function StepNode({ step, isLast }) {
           {/* Why */}
           <p style={{
             fontFamily: '"DM Sans"',
-            fontSize: '12px',
+            fontSize: '14px',
             fontWeight: 400,
-            color: 'rgba(200,223,240,0.85)',
-            lineHeight: 1.45,
+            color: 'rgba(200,223,240,0.92)',
+            lineHeight: 1.5,
             flex: 1,
           }}>
             {step.why}
@@ -197,13 +197,13 @@ function StepNode({ step, isLast }) {
 
           {/* Filename at bottom */}
           <div style={{
-            marginTop: '10px',
-            paddingTop: '7px',
+            marginTop: '12px',
+            paddingTop: '9px',
             borderTop: `1px dashed ${c.border}`,
             fontFamily: '"JetBrains Mono"',
-            fontSize: '10px',
+            fontSize: '11.5px',
             color: c.accent,
-            opacity: 0.85,
+            opacity: 1,
             wordBreak: 'break-all',
           }}>
             {step.file}
@@ -212,19 +212,20 @@ function StepNode({ step, isLast }) {
 
         {/* Pointer section (the "next" half of the linked list node) */}
         <div style={{
-          width: '14px',
+          width: '18px',
           background: c.iconBg,
           borderLeft: `1px dashed ${c.border}`,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           fontFamily: '"JetBrains Mono"',
-          fontSize: '8px',
+          fontSize: '10px',
           color: c.accent,
           writingMode: 'vertical-rl',
           textOrientation: 'mixed',
-          letterSpacing: '0.08em',
-          opacity: 0.55,
+          letterSpacing: '0.1em',
+          opacity: 0.7,
+          fontWeight: 500,
         }}>
           {isLast ? 'NULL' : 'NEXT'}
         </div>
@@ -236,11 +237,11 @@ function StepNode({ step, isLast }) {
           flexShrink: 0,
           display: 'flex',
           alignItems: 'center',
-          padding: '0 4px',
+          padding: '0 5px',
         }}>
-          <svg width="22" height="14" viewBox="0 0 22 14">
-            <line x1="0" y1="7" x2="18" y2="7" stroke="rgba(143,184,217,0.45)" strokeWidth="1.2" />
-            <path d="M 14,3 L 20,7 L 14,11" fill="none" stroke="rgba(143,184,217,0.7)" strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round" />
+          <svg width="26" height="16" viewBox="0 0 26 16">
+            <line x1="0" y1="8" x2="22" y2="8" stroke="rgba(143,184,217,0.6)" strokeWidth="1.5" />
+            <path d="M 17,3 L 24,8 L 17,13" fill="none" stroke="rgba(143,184,217,0.85)" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round" />
           </svg>
         </div>
       )}
@@ -259,23 +260,24 @@ export default function Slide5() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '40px 40px 80px',
+      padding: '60px 50px 110px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '20px', zIndex: 10 }}>
+      <div style={{ textAlign: 'center', marginBottom: '32px', zIndex: 10 }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: '11px',
-            letterSpacing: '0.2em',
+            fontSize: '14px',
+            letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'rgba(212,112,74,0.7)',
-            marginBottom: '8px',
+            color: 'rgba(232,145,110,0.95)',
+            marginBottom: '12px',
+            fontWeight: 500,
           }}
         >
           The Process
@@ -286,10 +288,10 @@ export default function Slide5() {
           transition={{ duration: 0.7, delay: 0.1 }}
           style={{
             fontFamily: '"Playfair Display"',
-            fontSize: 'clamp(26px, 3vw, 38px)',
+            fontSize: 'clamp(38px, 4vw, 54px)',
             fontWeight: 600,
             color: '#F4EFE4',
-            lineHeight: 1.2,
+            lineHeight: 1.15,
           }}
         >
           What Data Cleaning <em style={{ color: 'rgba(217,188,130,0.95)', fontStyle: 'italic' }}>Looks Like</em>
@@ -300,10 +302,10 @@ export default function Slide5() {
           transition={{ delay: 0.3 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: '15px',
-            color: 'rgba(200,223,240,0.7)',
-            marginTop: '8px',
-            maxWidth: '780px',
+            fontSize: 'clamp(17px, 1.5vw, 20px)',
+            color: 'rgba(200,223,240,0.85)',
+            marginTop: '12px',
+            maxWidth: '900px',
           }}
         >
           Doing this manually for every Excel file would take weeks. The pipeline does it in seconds. Seven chained steps, each one its own Python script.
@@ -328,23 +330,24 @@ export default function Slide5() {
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            marginRight: '6px',
+            marginRight: '8px',
           }}>
             <div style={{
               fontFamily: '"JetBrains Mono"',
-              fontSize: '9.5px',
-              letterSpacing: '0.14em',
-              color: 'rgba(217,188,130,0.7)',
-              border: '1px dashed rgba(217,188,130,0.35)',
-              borderRadius: '4px',
-              padding: '4px 8px',
-              marginRight: '6px',
+              fontSize: '12px',
+              letterSpacing: '0.16em',
+              color: 'rgba(217,188,130,0.95)',
+              border: '1px dashed rgba(217,188,130,0.5)',
+              borderRadius: '5px',
+              padding: '5px 10px',
+              marginRight: '8px',
+              fontWeight: 600,
             }}>
               HEAD
             </div>
-            <svg width="20" height="14" viewBox="0 0 20 14">
-              <line x1="0" y1="7" x2="16" y2="7" stroke="rgba(217,188,130,0.5)" strokeWidth="1.2" />
-              <path d="M 12,3 L 18,7 L 12,11" fill="none" stroke="rgba(217,188,130,0.7)" strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round" />
+            <svg width="24" height="16" viewBox="0 0 24 16">
+              <line x1="0" y1="8" x2="20" y2="8" stroke="rgba(217,188,130,0.7)" strokeWidth="1.4" />
+              <path d="M 15,3 L 22,8 L 15,13" fill="none" stroke="rgba(217,188,130,0.95)" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round" />
             </svg>
           </div>
 
@@ -368,18 +371,19 @@ export default function Slide5() {
         transition={{ duration: 0.7, delay: 1.3 }}
         style={{
           width: '100%',
-          maxWidth: '1100px',
+          maxWidth: '1400px',
           zIndex: 10,
         }}
       >
         <div style={{
           textAlign: 'center',
           fontFamily: '"DM Sans"',
-          fontSize: '11px',
-          letterSpacing: '0.2em',
+          fontSize: '14px',
+          letterSpacing: '0.22em',
           textTransform: 'uppercase',
-          color: 'rgba(217,188,130,0.7)',
-          marginBottom: '14px',
+          color: 'rgba(217,188,130,0.85)',
+          marginBottom: '20px',
+          fontWeight: 500,
         }}>
           Built With
         </div>
@@ -387,7 +391,7 @@ export default function Slide5() {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '12px',
+          gap: '16px',
         }}>
           {TECH.map((tech, i) => {
             const Icon = tech.icon
@@ -398,41 +402,41 @@ export default function Slide5() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 1.45 + i * 0.1 }}
                 style={{
-                  background: 'rgba(11,35,64,0.55)',
-                  border: '1px solid rgba(143,184,217,0.18)',
-                  borderRadius: '10px',
-                  padding: '12px 14px',
+                  background: 'rgba(11,35,64,0.6)',
+                  border: '1.5px solid rgba(143,184,217,0.25)',
+                  borderRadius: '12px',
+                  padding: '18px 20px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '12px',
+                  gap: '16px',
                 }}
               >
                 <div style={{
-                  width: '34px',
-                  height: '34px',
-                  borderRadius: '8px',
-                  background: 'rgba(217,188,130,0.12)',
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '10px',
+                  background: 'rgba(217,188,130,0.15)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexShrink: 0,
                 }}>
-                  <Icon size={16} color="rgba(217,188,130,0.85)" />
+                  <Icon size={22} color="rgba(217,188,130,1)" />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{
                     fontFamily: '"JetBrains Mono"',
-                    fontSize: '14.5px',
-                    fontWeight: 500,
+                    fontSize: '18px',
+                    fontWeight: 600,
                     color: '#F4EFE4',
-                    marginBottom: '2px',
+                    marginBottom: '4px',
                   }}>
                     {tech.name}
                   </div>
                   <div style={{
                     fontFamily: '"DM Sans"',
-                    fontSize: '12px',
-                    color: 'rgba(200,223,240,0.78)',
+                    fontSize: '14px',
+                    color: 'rgba(200,223,240,0.88)',
                     lineHeight: 1.4,
                   }}>
                     {tech.desc}

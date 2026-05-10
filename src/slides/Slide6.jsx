@@ -57,15 +57,15 @@ const CYCLE_STEPS = [
   },
 ]
 
-const RADIUS = 150
-const CENTER = 230
+const RADIUS = 175
+const CENTER = 260
 
 function CycleNode({ step }) {
   const Icon = step.icon
   const angleRad = (step.angle * Math.PI) / 180
   const x = CENTER + RADIUS * Math.cos(angleRad)
   const y = CENTER + RADIUS * Math.sin(angleRad)
-  const size = step.isMain ? 130 : 110
+  const size = step.isMain ? 155 : 132
 
   return (
     <motion.div
@@ -92,24 +92,24 @@ function CycleNode({ step }) {
         zIndex: 10,
       }}
     >
-      <Icon size={step.isMain ? 24 : 20} color={step.color} />
+      <Icon size={step.isMain ? 28 : 24} color={step.color} />
       <div style={{
         fontFamily: '"Playfair Display"',
-        fontSize: step.isMain ? '14px' : '13px',
+        fontSize: step.isMain ? '17px' : '15px',
         fontWeight: 600,
         color: '#F4EFE4',
-        marginTop: '5px',
+        marginTop: '6px',
         lineHeight: 1.15,
       }}>
         {step.label}
       </div>
       <div style={{
         fontFamily: '"DM Sans"',
-        fontSize: '10.5px',
-        color: 'rgba(200,223,240,0.78)',
-        marginTop: '3px',
+        fontSize: '12px',
+        color: 'rgba(200,223,240,0.88)',
+        marginTop: '4px',
         lineHeight: 1.3,
-        padding: '0 6px',
+        padding: '0 8px',
       }}>
         {step.subtitle}
       </div>
@@ -127,23 +127,24 @@ export default function Slide6() {
       background: 'linear-gradient(160deg, #061525 0%, #0B2340 50%, #0E1E3A 100%)',
       display: 'flex',
       flexDirection: 'column',
-      padding: '50px 60px 80px',
+      padding: '70px 80px 110px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '20px', zIndex: 10 }}>
+      <div style={{ textAlign: 'center', marginBottom: '32px', zIndex: 10 }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: '11px',
-            letterSpacing: '0.2em',
+            fontSize: '14px',
+            letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'rgba(212,112,74,0.7)',
-            marginBottom: '8px',
+            color: 'rgba(232,145,110,0.95)',
+            marginBottom: '12px',
+            fontWeight: 500,
           }}
         >
           The Workflow
@@ -154,10 +155,10 @@ export default function Slide6() {
           transition={{ duration: 0.7, delay: 0.1 }}
           style={{
             fontFamily: '"Playfair Display"',
-            fontSize: 'clamp(24px, 2.8vw, 38px)',
+            fontSize: 'clamp(38px, 4vw, 54px)',
             fontWeight: 600,
             color: '#F4EFE4',
-            lineHeight: 1.2,
+            lineHeight: 1.15,
           }}
         >
           A weekly cycle <em style={{ color: 'rgba(217,188,130,0.95)', fontStyle: 'italic' }}>of meet, plan, build, repeat</em>
@@ -168,9 +169,11 @@ export default function Slide6() {
           transition={{ delay: 0.3 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: '15px',
-            color: 'rgba(200,223,240,0.7)',
-            marginTop: '8px',
+            fontSize: 'clamp(17px, 1.5vw, 20px)',
+            color: 'rgba(200,223,240,0.85)',
+            marginTop: '12px',
+            maxWidth: '900px',
+            margin: '12px auto 0',
           }}
         >
           Every file was different. Every week we reviewed the last one and planned the next.
@@ -181,19 +184,19 @@ export default function Slide6() {
       <div style={{
         flex: 1,
         display: 'grid',
-        gridTemplateColumns: '460px 1fr',
-        gap: '40px',
+        gridTemplateColumns: '520px 1fr',
+        gap: '50px',
         alignItems: 'center',
         zIndex: 10,
       }}>
         {/* LEFT: Cycle diagram */}
         <div style={{
           position: 'relative',
-          width: '460px',
-          height: '460px',
+          width: '520px',
+          height: '520px',
         }}>
           {/* Background circle */}
-          <svg viewBox="0 0 460 460" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+          <svg viewBox="0 0 520 520" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
             <defs>
               <marker id="cycle-arrow" viewBox="0 0 10 10" refX="6" refY="5"
                 markerWidth="5" markerHeight="5" orient="auto-start-reverse">
@@ -228,8 +231,8 @@ export default function Slide6() {
             })}
 
             {/* Inner repeat circle — sized to comfortably hold the icon + label */}
-            <circle cx={CENTER} cy={CENTER} r="48" fill="rgba(217,188,130,0.08)"
-              stroke="rgba(217,188,130,0.3)" strokeWidth="1" strokeDasharray="2 2" />
+            <circle cx={CENTER} cy={CENTER} r="56" fill="rgba(217,188,130,0.1)"
+              stroke="rgba(217,188,130,0.4)" strokeWidth="1.2" strokeDasharray="2.5 2.5" />
           </svg>
 
           {/* Center "Repeat" indicator */}
@@ -249,13 +252,14 @@ export default function Slide6() {
               zIndex: 5,
             }}
           >
-            <Repeat size={18} color="rgba(217,188,130,0.85)" />
+            <Repeat size={22} color="rgba(217,188,130,1)" />
             <span style={{
               fontFamily: '"DM Sans"',
-              fontSize: '10px',
-              letterSpacing: '0.14em',
+              fontSize: '12px',
+              letterSpacing: '0.16em',
               textTransform: 'uppercase',
-              color: 'rgba(217,188,130,0.75)',
+              color: 'rgba(217,188,130,0.95)',
+              fontWeight: 600,
             }}>
               every week
             </span>
@@ -273,23 +277,23 @@ export default function Slide6() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             style={{
-              background: 'rgba(212,112,74,0.1)',
-              border: '1px solid rgba(212,112,74,0.4)',
-              borderRadius: '14px',
-              padding: '18px 22px',
+              background: 'rgba(212,112,74,0.12)',
+              border: '1.5px solid rgba(212,112,74,0.5)',
+              borderRadius: '16px',
+              padding: '26px 30px',
               backdropFilter: 'blur(8px)',
             }}
           >
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '10px',
-              marginBottom: '14px',
+              gap: '14px',
+              marginBottom: '20px',
             }}>
-              <TeamsIcon size={20} />
+              <TeamsIcon size={26} />
               <span style={{
                 fontFamily: '"Playfair Display"',
-                fontSize: '17px',
+                fontSize: '23px',
                 fontWeight: 600,
                 color: '#F4EFE4',
               }}>
@@ -298,16 +302,17 @@ export default function Slide6() {
               <span style={{
                 marginLeft: 'auto',
                 fontFamily: '"DM Sans"',
-                fontSize: '10px',
-                color: 'rgba(217,188,130,0.55)',
-                letterSpacing: '0.12em',
+                fontSize: '12px',
+                color: 'rgba(217,188,130,0.85)',
+                letterSpacing: '0.14em',
                 textTransform: 'uppercase',
+                fontWeight: 500,
               }}>
                 Two parts
               </span>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
               {[
                 {
                   icon: Eye,
@@ -331,40 +336,41 @@ export default function Slide6() {
                     transition={{ delay: 0.8 + i * 0.15 }}
                     style={{
                       display: 'flex',
-                      gap: '12px',
+                      gap: '16px',
                       alignItems: 'flex-start',
                     }}
                   >
                     <div style={{
                       flexShrink: 0,
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '8px',
-                      background: 'rgba(212,112,74,0.18)',
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '10px',
+                      background: 'rgba(212,112,74,0.22)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                      <Icon size={14} color="rgba(232,145,110,0.95)" />
+                      <Icon size={19} color="rgba(232,145,110,1)" />
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{
                         display: 'flex',
                         alignItems: 'baseline',
-                        gap: '8px',
-                        marginBottom: '3px',
+                        gap: '10px',
+                        marginBottom: '5px',
                       }}>
                         <span style={{
                           fontFamily: '"JetBrains Mono"',
-                          fontSize: '10px',
-                          color: 'rgba(232,145,110,0.85)',
+                          fontSize: '12px',
+                          color: 'rgba(232,145,110,1)',
                           letterSpacing: '0.06em',
+                          fontWeight: 600,
                         }}>
                           {part.num}
                         </span>
                         <span style={{
                           fontFamily: '"Playfair Display"',
-                          fontSize: '14px',
+                          fontSize: '19px',
                           fontWeight: 600,
                           color: '#F4EFE4',
                         }}>
@@ -373,9 +379,9 @@ export default function Slide6() {
                       </div>
                       <p style={{
                         fontFamily: '"DM Sans"',
-                        fontSize: '13.5px',
+                        fontSize: '16px',
                         fontWeight: 400,
-                        color: 'rgba(200,223,240,0.85)',
+                        color: 'rgba(200,223,240,0.92)',
                         lineHeight: 1.55,
                       }}>
                         {part.text}

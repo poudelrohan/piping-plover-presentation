@@ -66,10 +66,10 @@ export default function Slide8() {
         animate={{ scaleX: 1, opacity: 1 }}
         transition={{ duration: 1.2, delay: 0.3 }}
         style={{
-          width: '120px',
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, rgba(217,188,130,0.7), transparent)',
-          marginBottom: '40px',
+          width: '160px',
+          height: '1.5px',
+          background: 'linear-gradient(90deg, transparent, rgba(217,188,130,0.85), transparent)',
+          marginBottom: '52px',
           zIndex: 10,
         }}
       />
@@ -81,14 +81,14 @@ export default function Slide8() {
         transition={{ duration: 1.0, delay: 0.5 }}
         style={{
           fontFamily: '"Playfair Display"',
-          fontSize: 'clamp(60px, 9vw, 120px)',
+          fontSize: 'clamp(80px, 11vw, 160px)',
           fontWeight: 500,
           color: '#F4EFE4',
           lineHeight: 1.0,
           letterSpacing: '-0.02em',
           textAlign: 'center',
           zIndex: 10,
-          marginBottom: '56px',
+          marginBottom: '72px',
         }}
       >
         Thank <em style={{ color: 'rgba(232,145,110,0.95)', fontStyle: 'italic' }}>you</em>
@@ -102,20 +102,20 @@ export default function Slide8() {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '14px',
-          padding: '14px 28px',
-          background: 'rgba(217,188,130,0.1)',
-          border: '1px solid rgba(217,188,130,0.4)',
-          borderRadius: '44px',
+          gap: '18px',
+          padding: '20px 40px',
+          background: 'rgba(217,188,130,0.13)',
+          border: '2px solid rgba(217,188,130,0.5)',
+          borderRadius: '56px',
           backdropFilter: 'blur(8px)',
           zIndex: 10,
         }}
       >
-        <MessageCircleQuestion size={20} color="rgba(217,188,130,0.9)" />
+        <MessageCircleQuestion size={28} color="rgba(217,188,130,1)" />
         <span style={{
           fontFamily: '"DM Sans", system-ui, sans-serif',
-          fontWeight: 500,
-          fontSize: 'clamp(17px, 1.7vw, 22px)',
+          fontWeight: 600,
+          fontSize: 'clamp(24px, 2.2vw, 30px)',
           color: 'rgba(217,188,130,1)',
           letterSpacing: '0.01em',
         }}>

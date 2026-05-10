@@ -76,23 +76,24 @@ export default function Slide3() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '50px 60px 80px',
+      padding: '70px 80px 110px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '30px', zIndex: 10 }}>
+      <div style={{ textAlign: 'center', marginBottom: '40px', zIndex: 10 }}>
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: '11px',
-            letterSpacing: '0.2em',
+            fontSize: '14px',
+            letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'rgba(212,112,74,0.7)',
-            marginBottom: '10px',
+            color: 'rgba(232,145,110,0.95)',
+            marginBottom: '14px',
+            fontWeight: 500,
           }}
         >
           The Data
@@ -103,10 +104,10 @@ export default function Slide3() {
           transition={{ duration: 0.7, delay: 0.15 }}
           style={{
             fontFamily: '"Playfair Display"',
-            fontSize: 'clamp(26px, 3vw, 40px)',
+            fontSize: 'clamp(40px, 4.2vw, 56px)',
             fontWeight: 600,
             color: '#F4EFE4',
-            lineHeight: 1.2,
+            lineHeight: 1.15,
           }}
         >
           4 Sources, <em style={{ color: 'rgba(217,188,130,0.95)', fontStyle: 'italic' }}>Different Shapes</em>
@@ -117,9 +118,9 @@ export default function Slide3() {
           transition={{ delay: 0.3 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: '15px',
-            color: 'rgba(200,223,240,0.7)',
-            marginTop: '8px',
+            fontSize: 'clamp(17px, 1.5vw, 20px)',
+            color: 'rgba(200,223,240,0.85)',
+            marginTop: '12px',
           }}
         >
           Most are single Excel files. One source spans 12 years, with 3 sheets in each year's file.
@@ -148,20 +149,21 @@ export default function Slide3() {
           }}
         >
           <div style={{
-            background: 'rgba(217,188,130,0.12)',
-            border: '1.5px solid rgba(217,188,130,0.4)',
-            borderRadius: '24px',
-            padding: '8px 20px',
+            background: 'rgba(217,188,130,0.15)',
+            border: '1.5px solid rgba(217,188,130,0.5)',
+            borderRadius: '28px',
+            padding: '11px 26px',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
+            gap: '10px',
             fontFamily: '"DM Sans"',
-            fontSize: '11px',
-            letterSpacing: '0.15em',
+            fontSize: '14px',
+            letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            color: 'rgba(217,188,130,0.9)',
+            color: 'rgba(217,188,130,1)',
+            fontWeight: 500,
           }}>
-            <FileSpreadsheet size={13} />
+            <FileSpreadsheet size={17} />
             Raw Survey Data
           </div>
         </motion.div>
@@ -217,42 +219,43 @@ export default function Slide3() {
                 transition={{ duration: 0.55, delay: 0.7 + i * 0.1 }}
                 style={{
                   background: src.bg,
-                  border: `1px solid ${src.border}`,
-                  borderRadius: '12px',
-                  padding: '14px 14px 12px',
+                  border: `1.5px solid ${src.border}`,
+                  borderRadius: '14px',
+                  padding: '20px 18px 18px',
                   backdropFilter: 'blur(8px)',
                   textAlign: 'center',
                 }}
               >
                 <div style={{
-                  width: '34px',
-                  height: '34px',
-                  borderRadius: '8px',
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '10px',
                   background: src.bg.replace(/[\d.]+\)/, '0.2)'),
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  margin: '0 auto 8px',
+                  margin: '0 auto 12px',
                 }}>
-                  <Icon size={17} color={src.color} />
+                  <Icon size={22} color={src.color} />
                 </div>
                 <div style={{
                   fontFamily: '"Playfair Display"',
-                  fontSize: 'clamp(15px, 1.35vw, 18px)',
+                  fontSize: 'clamp(19px, 1.6vw, 24px)',
                   fontWeight: 600,
                   color: '#F4EFE4',
                   lineHeight: 1.2,
-                  marginBottom: '3px',
+                  marginBottom: '6px',
                 }}>
                   {src.name}
                 </div>
                 <div style={{
                   fontFamily: '"DM Sans"',
-                  fontSize: '11px',
-                  letterSpacing: '0.12em',
+                  fontSize: '13px',
+                  letterSpacing: '0.13em',
                   textTransform: 'uppercase',
                   color: src.color,
-                  opacity: 0.85,
+                  opacity: 0.95,
+                  fontWeight: 500,
                 }}>
                   {src.type}
                 </div>
@@ -336,18 +339,18 @@ export default function Slide3() {
                   }}
                 >
                   <div style={{
-                    background: 'rgba(11,35,64,0.5)',
-                    border: '1px solid rgba(143,184,217,0.25)',
-                    borderRadius: '8px',
-                    padding: '9px 14px',
+                    background: 'rgba(11,35,64,0.55)',
+                    border: '1px solid rgba(143,184,217,0.3)',
+                    borderRadius: '10px',
+                    padding: '12px 18px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '8px',
+                    gap: '10px',
                     fontFamily: '"JetBrains Mono"',
-                    fontSize: '12.5px',
-                    color: 'rgba(200,223,240,0.85)',
+                    fontSize: '15px',
+                    color: 'rgba(200,223,240,0.95)',
                   }}>
-                    <FileSpreadsheet size={12} color="rgba(143,184,217,0.7)" />
+                    <FileSpreadsheet size={15} color="rgba(143,184,217,0.85)" />
                     {src.childLabel}
                   </div>
                 </motion.div>
@@ -370,9 +373,9 @@ export default function Slide3() {
                 <div style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(6, 1fr)',
-                  gap: '4px',
+                  gap: '6px',
                   width: '100%',
-                  maxWidth: '280px',
+                  maxWidth: '340px',
                 }}>
                   {src.years.map((yr, idx) => (
                     <motion.div
@@ -381,14 +384,15 @@ export default function Slide3() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 1.3 + idx * 0.04 }}
                       style={{
-                        background: 'rgba(212,112,74,0.18)',
-                        border: '1px solid rgba(212,112,74,0.5)',
-                        borderRadius: '6px',
-                        padding: '6px 0',
+                        background: 'rgba(212,112,74,0.2)',
+                        border: '1px solid rgba(212,112,74,0.55)',
+                        borderRadius: '7px',
+                        padding: '8px 0',
                         textAlign: 'center',
                         fontFamily: '"JetBrains Mono"',
-                        fontSize: '12px',
-                        color: 'rgba(240,170,135,1)',
+                        fontSize: '14px',
+                        color: 'rgba(245,180,150,1)',
+                        fontWeight: 500,
                       }}
                     >
                       {yr}
@@ -401,10 +405,11 @@ export default function Slide3() {
                   transition={{ delay: 1.8 }}
                   style={{
                     fontFamily: '"DM Sans"',
-                    fontSize: '12px',
-                    color: 'rgba(232,145,110,0.85)',
-                    letterSpacing: '0.05em',
+                    fontSize: '14px',
+                    color: 'rgba(232,145,110,1)',
+                    letterSpacing: '0.04em',
                     textAlign: 'center',
+                    fontWeight: 500,
                   }}
                 >
                   12 yearly files
@@ -427,32 +432,34 @@ export default function Slide3() {
           }}
         >
           <div style={{
-            background: 'rgba(212,112,74,0.1)',
-            border: '1px dashed rgba(212,112,74,0.5)',
-            borderRadius: '10px',
-            padding: '12px 20px',
+            background: 'rgba(212,112,74,0.12)',
+            border: '1px dashed rgba(212,112,74,0.55)',
+            borderRadius: '12px',
+            padding: '16px 26px',
             display: 'flex',
             alignItems: 'center',
-            gap: '14px',
+            gap: '18px',
           }}>
             <span style={{
               fontFamily: '"DM Sans"',
-              fontSize: '13px',
-              color: 'rgba(240,170,135,1)',
-              letterSpacing: '0.02em',
+              fontSize: '16px',
+              color: 'rgba(245,180,150,1)',
+              letterSpacing: '0.01em',
+              fontWeight: 500,
             }}>
               Each Winter Bird Survey file contains 3 internal sheets:
             </span>
-            <div style={{ display: 'flex', gap: '6px' }}>
+            <div style={{ display: 'flex', gap: '8px' }}>
               {['DS1 · Flock data', 'DS2 · Observer summary', 'DS3 · Banded resights'].map((s, i) => (
                 <span key={i} style={{
-                  background: 'rgba(212,112,74,0.22)',
-                  border: '1px solid rgba(212,112,74,0.5)',
-                  borderRadius: '5px',
-                  padding: '4px 9px',
+                  background: 'rgba(212,112,74,0.25)',
+                  border: '1px solid rgba(212,112,74,0.55)',
+                  borderRadius: '6px',
+                  padding: '6px 12px',
                   fontFamily: '"JetBrains Mono"',
-                  fontSize: '11.5px',
-                  color: 'rgba(245,180,150,1)',
+                  fontSize: '13px',
+                  color: 'rgba(250,200,170,1)',
+                  fontWeight: 500,
                 }}>
                   {s}
                 </span>
@@ -467,16 +474,16 @@ export default function Slide3() {
           animate={{ opacity: 1 }}
           transition={{ delay: 2.2 }}
           style={{
-            marginTop: '14px',
+            marginTop: '20px',
             textAlign: 'center',
             fontFamily: '"DM Sans"',
-            fontSize: '13.5px',
-            color: 'rgba(200,223,240,0.65)',
-            letterSpacing: '0.02em',
+            fontSize: '17px',
+            color: 'rgba(200,223,240,0.85)',
+            letterSpacing: '0.01em',
             zIndex: 10,
           }}
         >
-          Total: <strong style={{ color: 'rgba(217,188,130,0.95)', fontWeight: 600 }}>15 raw Excel files</strong> · <strong style={{ color: 'rgba(217,188,130,0.95)', fontWeight: 600 }}>~39 sheets</strong> · all entered by hand in the field
+          Total: <strong style={{ color: 'rgba(217,188,130,1)', fontWeight: 600 }}>15 raw Excel files</strong> · <strong style={{ color: 'rgba(217,188,130,1)', fontWeight: 600 }}>~39 sheets</strong> · all entered by hand in the field
         </motion.div>
       </div>
     </div>

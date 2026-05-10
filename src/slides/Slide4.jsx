@@ -37,23 +37,24 @@ export default function Slide4() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '50px 60px 80px',
+      padding: '70px 80px 110px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '36px', zIndex: 10 }}>
+      <div style={{ textAlign: 'center', marginBottom: '52px', zIndex: 10 }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: '11px',
-            letterSpacing: '0.2em',
+            fontSize: '14px',
+            letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'rgba(212,112,74,0.7)',
-            marginBottom: '10px',
+            color: 'rgba(232,145,110,0.95)',
+            marginBottom: '14px',
+            fontWeight: 500,
           }}
         >
           Progress
@@ -64,10 +65,10 @@ export default function Slide4() {
           transition={{ duration: 0.7, delay: 0.1 }}
           style={{
             fontFamily: '"Playfair Display"',
-            fontSize: 'clamp(26px, 3vw, 40px)',
+            fontSize: 'clamp(40px, 4.2vw, 56px)',
             fontWeight: 600,
             color: '#F4EFE4',
-            lineHeight: 1.2,
+            lineHeight: 1.15,
           }}
         >
           From four sources <em style={{ color: 'rgba(217,188,130,0.95)', fontStyle: 'italic' }}>to one clean dataset</em>
@@ -78,9 +79,11 @@ export default function Slide4() {
           transition={{ delay: 0.3 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: '15px',
-            color: 'rgba(200,223,240,0.7)',
-            marginTop: '8px',
+            fontSize: 'clamp(17px, 1.5vw, 20px)',
+            color: 'rgba(200,223,240,0.85)',
+            marginTop: '12px',
+            maxWidth: '900px',
+            margin: '12px auto 0',
           }}
         >
           Three of the four sources are fully cleaned. The Winter Bird Survey is the long one and is still in progress.
@@ -91,15 +94,15 @@ export default function Slide4() {
       <div style={{
         flex: 1,
         width: '100%',
-        maxWidth: '1200px',
+        maxWidth: '1500px',
         display: 'grid',
-        gridTemplateColumns: '1fr 220px 1fr',
+        gridTemplateColumns: '1fr 280px 1fr',
         alignItems: 'center',
-        gap: '20px',
+        gap: '30px',
         zIndex: 10,
       }}>
         {/* LEFT: 4 source pills */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
           {SOURCES.map((src, i) => {
             const Icon = src.icon
             const c = COLORS[src.status]
@@ -111,52 +114,52 @@ export default function Slide4() {
                 transition={{ duration: 0.55, delay: 0.4 + i * 0.12 }}
                 style={{
                   background: c.bg,
-                  border: `1px solid ${c.border}`,
-                  borderRadius: '12px',
-                  padding: '14px 18px',
+                  border: `1.5px solid ${c.border}`,
+                  borderRadius: '14px',
+                  padding: '20px 24px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '14px',
+                  gap: '18px',
                   backdropFilter: 'blur(8px)',
                 }}
               >
                 <div style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
+                  width: '52px',
+                  height: '52px',
+                  borderRadius: '12px',
                   background: c.iconBg,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexShrink: 0,
                 }}>
-                  <Icon size={18} color={c.text} />
+                  <Icon size={24} color={c.text} />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{
                     fontFamily: '"Playfair Display"',
-                    fontSize: 'clamp(16px, 1.5vw, 19px)',
+                    fontSize: 'clamp(20px, 1.7vw, 24px)',
                     fontWeight: 600,
                     color: '#F4EFE4',
-                    marginBottom: '3px',
+                    marginBottom: '5px',
                     lineHeight: 1.2,
                   }}>
                     {src.name}
                   </div>
                   <div style={{
                     fontFamily: '"JetBrains Mono"',
-                    fontSize: '12.5px',
-                    color: 'rgba(200,223,240,0.8)',
+                    fontSize: '15px',
+                    color: 'rgba(200,223,240,0.9)',
                   }}>
                     {src.count}
                   </div>
                 </div>
                 {src.status === 'done' ? (
-                  <CheckCircle2 size={20} color={c.text} />
+                  <CheckCircle2 size={26} color={c.text} />
                 ) : (
                   <div style={{
-                    width: '12px',
-                    height: '12px',
+                    width: '16px',
+                    height: '16px',
                     borderRadius: '50%',
                     background: c.text,
                     animation: 'pulse-dot 1.8s ease-in-out infinite',
@@ -223,13 +226,14 @@ export default function Slide4() {
               transform: 'translate(-50%, -50%)',
               fontFamily: '"Playfair Display"',
               fontStyle: 'italic',
-              fontSize: '14px',
-              color: 'rgba(217,188,130,0.75)',
-              background: 'rgba(11,35,64,0.92)',
-              padding: '5px 14px',
-              borderRadius: '20px',
-              border: '1px solid rgba(217,188,130,0.35)',
+              fontSize: '18px',
+              color: 'rgba(217,188,130,0.95)',
+              background: 'rgba(11,35,64,0.95)',
+              padding: '7px 18px',
+              borderRadius: '24px',
+              border: '1.5px solid rgba(217,188,130,0.5)',
               whiteSpace: 'nowrap',
+              fontWeight: 500,
             }}
           >
             merge
@@ -274,38 +278,38 @@ export default function Slide4() {
           {/* The master file card */}
           <div style={{
             background: 'linear-gradient(160deg, rgba(217,188,130,0.18) 0%, rgba(217,188,130,0.06) 100%)',
-            border: '1.5px solid rgba(217,188,130,0.55)',
-            borderRadius: '16px',
-            padding: '24px 26px',
+            border: '2px solid rgba(217,188,130,0.6)',
+            borderRadius: '18px',
+            padding: '30px 32px',
             backdropFilter: 'blur(10px)',
             position: 'relative',
             zIndex: 5,
-            minWidth: '240px',
+            minWidth: '320px',
           }}>
             {/* File header */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '10px',
-              marginBottom: '14px',
-              paddingBottom: '12px',
-              borderBottom: '1px solid rgba(217,188,130,0.25)',
+              gap: '14px',
+              marginBottom: '18px',
+              paddingBottom: '16px',
+              borderBottom: '1px solid rgba(217,188,130,0.3)',
             }}>
               <div style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '8px',
-                background: 'rgba(217,188,130,0.2)',
+                width: '50px',
+                height: '50px',
+                borderRadius: '10px',
+                background: 'rgba(217,188,130,0.22)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-                <FileSpreadsheet size={20} color="rgba(217,188,130,0.95)" />
+                <FileSpreadsheet size={26} color="rgba(217,188,130,1)" />
               </div>
               <div>
                 <div style={{
                   fontFamily: '"Playfair Display"',
-                  fontSize: '19px',
+                  fontSize: '24px',
                   fontWeight: 600,
                   color: '#F4EFE4',
                   lineHeight: 1.1,
@@ -314,9 +318,9 @@ export default function Slide4() {
                 </div>
                 <div style={{
                   fontFamily: '"JetBrains Mono"',
-                  fontSize: '11.5px',
-                  color: 'rgba(217,188,130,0.85)',
-                  marginTop: '3px',
+                  fontSize: '14px',
+                  color: 'rgba(217,188,130,1)',
+                  marginTop: '4px',
                 }}>
                   pipl_master.xlsx
                 </div>
@@ -324,7 +328,7 @@ export default function Slide4() {
             </div>
 
             {/* Sheet rows */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {[
                 { label: 'Clean_Data', detail: 'all observations' },
                 { label: 'Removed_Rows', detail: 'with reasons' },
@@ -338,22 +342,22 @@ export default function Slide4() {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '8px',
-                    padding: '6px 11px',
-                    background: 'rgba(11,35,64,0.4)',
-                    borderRadius: '5px',
+                    gap: '10px',
+                    padding: '9px 14px',
+                    background: 'rgba(11,35,64,0.5)',
+                    borderRadius: '7px',
                     fontFamily: '"JetBrains Mono"',
-                    fontSize: '11.5px',
+                    fontSize: '14px',
                   }}
                 >
                   <div style={{
-                    width: '6px',
-                    height: '6px',
+                    width: '8px',
+                    height: '8px',
                     borderRadius: '50%',
                     background: 'rgba(100,210,165,0.95)',
                   }} />
                   <span style={{ color: 'rgba(217,188,130,1)' }}>{row.label}</span>
-                  <span style={{ color: 'rgba(200,223,240,0.6)', fontSize: '10.5px', marginLeft: 'auto' }}>{row.detail}</span>
+                  <span style={{ color: 'rgba(200,223,240,0.7)', fontSize: '13px', marginLeft: 'auto' }}>{row.detail}</span>
                 </motion.div>
               ))}
             </div>
@@ -364,23 +368,24 @@ export default function Slide4() {
               animate={{ opacity: 1 }}
               transition={{ delay: 2.1 }}
               style={{
-                marginTop: '14px',
-                padding: '9px 13px',
-                background: 'rgba(100,210,165,0.14)',
-                border: '1px solid rgba(100,210,165,0.4)',
-                borderRadius: '6px',
+                marginTop: '18px',
+                padding: '12px 16px',
+                background: 'rgba(100,210,165,0.16)',
+                border: '1.5px solid rgba(100,210,165,0.45)',
+                borderRadius: '8px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
+                gap: '10px',
                 fontFamily: '"DM Sans"',
-                fontSize: '12.5px',
-                color: 'rgba(150,235,195,1)',
+                fontSize: '15px',
+                color: 'rgba(160,240,200,1)',
+                fontWeight: 500,
               }}>
               <div style={{
-                width: '7px',
-                height: '7px',
+                width: '9px',
+                height: '9px',
                 borderRadius: '50%',
-                background: 'rgba(130,225,180,0.95)',
+                background: 'rgba(130,225,180,1)',
                 animation: 'pulse-dot 2s ease-in-out infinite',
               }} />
               31,521+ clean rows so far
@@ -393,14 +398,14 @@ export default function Slide4() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.0 }}
             style={{
-              marginTop: '18px',
+              marginTop: '24px',
               textAlign: 'center',
               fontFamily: '"Playfair Display"',
               fontStyle: 'italic',
-              fontSize: '15px',
-              color: 'rgba(217,188,130,0.85)',
-              maxWidth: '260px',
-              lineHeight: 1.5,
+              fontSize: '19px',
+              color: 'rgba(217,188,130,0.95)',
+              maxWidth: '340px',
+              lineHeight: 1.4,
             }}
           >
             One unified dataset. Every row traces back to its source.

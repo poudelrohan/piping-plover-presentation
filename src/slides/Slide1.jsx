@@ -4,33 +4,33 @@ import Birds from '../components/Birds'
 const USFWSBadge = () => (
   <div style={{
     position: 'absolute',
-    top: '32px',
-    left: '36px',
+    top: '40px',
+    left: '48px',
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    gap: '16px',
     zIndex: 20,
   }}>
     {/* Shield */}
     <div style={{
-      width: '52px',
-      height: '58px',
+      width: '70px',
+      height: '78px',
       background: 'rgba(217,188,130,0.12)',
       border: '1.5px solid rgba(217,188,130,0.3)',
-      borderRadius: '4px 4px 26px 26px',
+      borderRadius: '5px 5px 35px 35px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
     }}>
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
         <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"
-          stroke="rgba(217,188,130,0.6)" strokeWidth="1.5" fill="none"/>
-        <path d="M9 12l2 2 4-4" stroke="rgba(217,188,130,0.6)" strokeWidth="1.5" strokeLinecap="round"/>
+          stroke="rgba(217,188,130,0.7)" strokeWidth="1.5" fill="none"/>
+        <path d="M9 12l2 2 4-4" stroke="rgba(217,188,130,0.7)" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     </div>
     <div>
-      <div style={{ fontFamily: '"DM Sans"', fontSize: '11px', letterSpacing: '0.15em', color: 'rgba(217,188,130,0.7)', textTransform: 'uppercase' }}>United States</div>
-      <div style={{ fontFamily: '"DM Sans"', fontSize: '12px', color: 'rgba(217,188,130,0.85)', marginTop: '2px', letterSpacing: '0.04em' }}>Fish &amp; Wildlife Service</div>
+      <div style={{ fontFamily: '"DM Sans"', fontSize: '14px', letterSpacing: '0.15em', color: 'rgba(217,188,130,0.85)', textTransform: 'uppercase', fontWeight: 500 }}>United States</div>
+      <div style={{ fontFamily: '"DM Sans"', fontSize: '16px', color: 'rgba(217,188,130,1)', marginTop: '3px', letterSpacing: '0.03em', fontWeight: 500 }}>Fish &amp; Wildlife Service</div>
     </div>
   </div>
 )
@@ -100,27 +100,29 @@ export default function Slide1() {
         transition={{ duration: 0.7, delay: 0.3 }}
         style={{
           position: 'absolute',
-          top: '36px',
-          right: '36px',
+          top: '44px',
+          right: '48px',
           textAlign: 'right',
           zIndex: 20,
         }}
       >
         <div style={{
           fontFamily: '"DM Sans"',
-          fontSize: '10px',
-          letterSpacing: '0.2em',
+          fontSize: '13px',
+          letterSpacing: '0.22em',
           textTransform: 'uppercase',
-          color: 'rgba(212,112,74,0.7)',
-          marginBottom: '2px',
+          color: 'rgba(232,145,110,0.95)',
+          marginBottom: '4px',
+          fontWeight: 500,
         }}>
           Spring 2026
         </div>
         <div style={{
           fontFamily: '"DM Sans"',
-          fontSize: '11px',
-          color: 'rgba(217,188,130,0.45)',
-          letterSpacing: '0.04em',
+          fontSize: '15px',
+          color: 'rgba(217,188,130,0.7)',
+          letterSpacing: '0.03em',
+          fontWeight: 400,
         }}>
           USFWS Student Symposium
         </div>
@@ -132,10 +134,10 @@ export default function Slide1() {
         animate={{ scaleX: 1, opacity: 1 }}
         transition={{ duration: 1.2, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
         style={{
-          width: '80px',
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, rgba(212,112,74,0.7), transparent)',
-          marginBottom: '28px',
+          width: '120px',
+          height: '1.5px',
+          background: 'linear-gradient(90deg, transparent, rgba(212,112,74,0.85), transparent)',
+          marginBottom: '40px',
           zIndex: 10,
         }}
       />
@@ -147,15 +149,15 @@ export default function Slide1() {
         transition={{ duration: 0.9, delay: 0.8 }}
         style={{
           fontFamily: '"Playfair Display"',
-          fontSize: 'clamp(30px, 4.2vw, 56px)',
+          fontSize: 'clamp(44px, 5.6vw, 84px)',
           fontWeight: 600,
           color: '#F4EFE4',
-          lineHeight: 1.15,
-          maxWidth: '900px',
+          lineHeight: 1.1,
+          maxWidth: '1300px',
           textAlign: 'center',
           zIndex: 10,
-          marginBottom: '22px',
-          padding: '0 40px',
+          marginBottom: '32px',
+          padding: '0 60px',
         }}
       >
         Piping Plover Observational Data:<br />
@@ -169,16 +171,16 @@ export default function Slide1() {
         transition={{ duration: 0.8, delay: 1.1 }}
         style={{
           fontFamily: '"DM Sans"',
-          fontSize: 'clamp(15px, 1.6vw, 18px)',
+          fontSize: 'clamp(20px, 2vw, 26px)',
           fontWeight: 400,
-          color: 'rgba(200,223,240,0.85)',
-          maxWidth: '680px',
+          color: 'rgba(200,223,240,0.9)',
+          maxWidth: '900px',
           textAlign: 'center',
-          lineHeight: 1.6,
+          lineHeight: 1.55,
           zIndex: 10,
-          marginBottom: '46px',
-          padding: '0 40px',
-          letterSpacing: '0.02em',
+          marginBottom: '64px',
+          padding: '0 60px',
+          letterSpacing: '0.01em',
         }}
       >
         Turning four scattered survey files into one clean dataset
@@ -191,9 +193,9 @@ export default function Slide1() {
         transition={{ duration: 0.8, delay: 1.3 }}
         style={{
           width: '1px',
-          height: '36px',
-          background: 'linear-gradient(180deg, rgba(217,188,130,0.5), transparent)',
-          marginBottom: '20px',
+          height: '48px',
+          background: 'linear-gradient(180deg, rgba(217,188,130,0.6), transparent)',
+          marginBottom: '28px',
           zIndex: 10,
         }}
       />
@@ -207,25 +209,26 @@ export default function Slide1() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '4px',
+          gap: '6px',
           zIndex: 10,
-          marginBottom: '24px',
+          marginBottom: '36px',
         }}
       >
         <span style={{
           fontFamily: '"Playfair Display"',
-          fontSize: '22px',
-          color: 'rgba(217,188,130,0.95)',
+          fontSize: 'clamp(28px, 2.6vw, 34px)',
+          color: 'rgba(217,188,130,1)',
           fontWeight: 500,
         }}>
           Rohan Poudel
         </span>
         <span style={{
           fontFamily: '"DM Sans"',
-          fontSize: '13px',
-          color: 'rgba(200,223,240,0.65)',
-          letterSpacing: '0.14em',
+          fontSize: '17px',
+          color: 'rgba(200,223,240,0.8)',
+          letterSpacing: '0.16em',
           textTransform: 'uppercase',
+          fontWeight: 500,
         }}>
           Intern
         </span>
@@ -240,29 +243,30 @@ export default function Slide1() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '6px',
+          gap: '10px',
           zIndex: 10,
         }}
       >
         <span style={{
           fontFamily: '"DM Sans"',
-          fontSize: '11px',
-          color: 'rgba(200,223,240,0.55)',
-          letterSpacing: '0.22em',
+          fontSize: '14px',
+          color: 'rgba(200,223,240,0.7)',
+          letterSpacing: '0.24em',
           textTransform: 'uppercase',
+          fontWeight: 500,
         }}>
           USFWS Mentors
         </span>
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '14px',
+          gap: '20px',
           fontFamily: '"Playfair Display"',
-          fontSize: '17px',
-          color: 'rgba(200,223,240,0.85)',
+          fontSize: 'clamp(20px, 1.9vw, 26px)',
+          color: 'rgba(200,223,240,0.95)',
         }}>
           <span>Caroline Walker</span>
-          <span style={{ color: 'rgba(212,112,74,0.5)', fontSize: '10px' }}>◆</span>
+          <span style={{ color: 'rgba(212,112,74,0.7)', fontSize: '13px' }}>◆</span>
           <span>Kevin Kalasz</span>
         </div>
       </motion.div>

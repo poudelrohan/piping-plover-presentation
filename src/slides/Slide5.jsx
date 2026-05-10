@@ -226,18 +226,18 @@ function CircleStepNode({ step, position }) {
   )
 }
 
-// Hand-placed zigzag positions in a 940×720 viewBox.
-// Steps 0,1,2,3 form a SE diagonal.
-// Step 4 is NE of step 3 (turning the path), positioned BELOW step 2.
-// Steps 5,6 continue from step 4 going SE.
+// Steps arranged in an arrow shape (>) with the tip pointing right.
+// Top wing: steps 0,1,2,3 going SE (down-right).
+// Step 3 is the tip (rightmost point).
+// Bottom wing: steps 3,4,5,6 going SW from the tip (down-left).
 const ZIGZAG_POSITIONS = [
   { x: 110, y: 80  },  // Step 0: top-left
-  { x: 270, y: 180 },  // Step 1: SE of 0
-  { x: 430, y: 280 },  // Step 2: SE of 1
-  { x: 590, y: 380 },  // Step 3: SE of 2 (end of first SE diagonal)
-  { x: 750, y: 320 },  // Step 4: NE of 3 (turn upward), below step 2 (y=320 > 280)
-  { x: 820, y: 470 },  // Step 5: SE of 4 (continuing path)
-  { x: 820, y: 630 },  // Step 6: below 5 (final, bottom-right)
+  { x: 280, y: 180 },  // Step 1: SE
+  { x: 450, y: 280 },  // Step 2: SE
+  { x: 620, y: 380 },  // Step 3: SE (TIP — rightmost point of arrow)
+  { x: 450, y: 480 },  // Step 4: SW (mirror of step 2)
+  { x: 280, y: 580 },  // Step 5: SW (mirror of step 1)
+  { x: 110, y: 680 },  // Step 6: SW (mirror of step 0, bottom-left)
 ]
 
 export default function Slide5() {
@@ -528,11 +528,12 @@ export default function Slide5() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6 }}
             >
-              {/* Position the END label below step 6 */}
+              {/* Position the END label below-right of step 6 (step 6 is at the
+                  bottom-left tip of the arrow). */}
               {(() => {
                 const last = positions[STEPS.length - 1]
-                const labelX = last.x
-                const labelY = last.y + 75
+                const labelX = last.x + 130   // right of the card
+                const labelY = last.y
                 return (
                   <>
                     <rect

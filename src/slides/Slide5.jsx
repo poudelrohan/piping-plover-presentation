@@ -226,24 +226,22 @@ function CircleStepNode({ step, position }) {
   )
 }
 
-// Place 7 nodes evenly around a circle. Step 0 at the top (12 o'clock).
-function getCirclePosition(index, total, cx, cy, rx, ry) {
-  const angleStep = (2 * Math.PI) / total
-  const angle = -Math.PI / 2 + index * angleStep
-  return {
-    x: cx + rx * Math.cos(angle),
-    y: cy + ry * Math.sin(angle),
-  }
-}
+// Hand-placed zigzag positions in a 940×720 viewBox.
+// Steps 0,1,2,3 form a SE diagonal.
+// Step 4 is NE of step 3 (turning the path), positioned BELOW step 2.
+// Steps 5,6 continue from step 4 going SE.
+const ZIGZAG_POSITIONS = [
+  { x: 110, y: 80  },  // Step 0: top-left
+  { x: 270, y: 180 },  // Step 1: SE of 0
+  { x: 430, y: 280 },  // Step 2: SE of 1
+  { x: 590, y: 380 },  // Step 3: SE of 2 (end of first SE diagonal)
+  { x: 750, y: 320 },  // Step 4: NE of 3 (turn upward), below step 2 (y=320 > 280)
+  { x: 820, y: 470 },  // Step 5: SE of 4 (continuing path)
+  { x: 820, y: 630 },  // Step 6: below 5 (final, bottom-right)
+]
 
 export default function Slide5() {
-  // Circle dimensions
-  const cx = 470
-  const cy = 360
-  const rx = 320
-  const ry = 290
-
-  const positions = STEPS.map((_, i) => getCirclePosition(i, STEPS.length, cx, cy, rx, ry))
+  const positions = ZIGZAG_POSITIONS
 
   return (
     <div style={{
@@ -441,34 +439,30 @@ export default function Slide5() {
               </marker>
             </defs>
 
-            {/* Faint guide circle */}
-            <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="none"
-              stroke="rgba(217,188,130,0.1)" strokeWidth="1" strokeDasharray="2 4" />
-
-            {/* Curved arrows along the circle from step i to step i+1.
-                NO arrow from step 6 back to step 0 — the circle stays open. */}
+            {/* Straight-ish arrows from step i to step i+1.
+                NO arrow from step 6 back to step 0 — the path stays open. */}
             {STEPS.map((step, i) => {
               if (i === STEPS.length - 1) return null
               const p1 = positions[i]
               const p2 = positions[i + 1]
 
-              // Trim each end so the arrow doesn't overlap the node card
-              const NODE_RADIUS = 100
+              // Trim each end so the arrow stops at the edge of the node card
+              const NODE_HALF_W = 95   // half card width (~180px wide)
+              const NODE_HALF_H = 50   // half card height
               const dx = p2.x - p1.x
               const dy = p2.y - p1.y
               const len = Math.hypot(dx, dy)
               const ux = dx / len
               const uy = dy / len
-              const sx = p1.x + ux * NODE_RADIUS
-              const sy = p1.y + uy * NODE_RADIUS
-              const ex = p2.x - ux * NODE_RADIUS
-              const ey = p2.y - uy * NODE_RADIUS
-
-              // Bend the path outward (away from center) so it follows the circle
-              const mx = (sx + ex) / 2
-              const my = (sy + ey) / 2
-              const outX = mx + (mx - cx) * 0.18
-              const outY = my + (my - cy) * 0.18
+              // Approximate trim: pick the smaller of (half-w / |ux|, half-h / |uy|)
+              const trim = Math.min(
+                Math.abs(ux) > 0.001 ? NODE_HALF_W / Math.abs(ux) : Infinity,
+                Math.abs(uy) > 0.001 ? NODE_HALF_H / Math.abs(uy) : Infinity
+              )
+              const sx = p1.x + ux * trim
+              const sy = p1.y + uy * trim
+              const ex = p2.x - ux * trim
+              const ey = p2.y - uy * trim
 
               const fromVariant = step.variant
               const toVariant = STEPS[i + 1].variant
@@ -477,18 +471,20 @@ export default function Slide5() {
                 toVariant === 'final' ? 'green' :
                 'blue'
               const strokeColor =
-                fromVariant === 'special' ? 'rgba(212,112,74,0.7)' :
-                toVariant === 'final' ? 'rgba(100,210,165,0.7)' :
-                'rgba(143,184,217,0.65)'
+                fromVariant === 'special' ? 'rgba(212,112,74,0.75)' :
+                toVariant === 'final' ? 'rgba(100,210,165,0.75)' :
+                'rgba(143,184,217,0.7)'
               const dashArray = fromVariant === 'special' ? '5 4' : '0'
 
               return (
-                <motion.path
+                <motion.line
                   key={i}
-                  d={`M ${sx} ${sy} Q ${outX} ${outY}, ${ex} ${ey}`}
+                  x1={sx}
+                  y1={sy}
+                  x2={ex}
+                  y2={ey}
                   stroke={strokeColor}
-                  strokeWidth="1.6"
-                  fill="none"
+                  strokeWidth="1.8"
                   markerEnd={`url(#step-arrow-${arrowMark})`}
                   strokeDasharray={dashArray}
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -532,17 +528,11 @@ export default function Slide5() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6 }}
             >
-              {/* Position the END label on the outside of step 6 */}
+              {/* Position the END label below step 6 */}
               {(() => {
                 const last = positions[STEPS.length - 1]
-                // Compute direction from center to last node and push label outward
-                const dx = last.x - cx
-                const dy = last.y - cy
-                const dlen = Math.hypot(dx, dy)
-                const ox = (dx / dlen) * 105
-                const oy = (dy / dlen) * 105
-                const labelX = last.x + ox
-                const labelY = last.y + oy
+                const labelX = last.x
+                const labelY = last.y + 75
                 return (
                   <>
                     <rect

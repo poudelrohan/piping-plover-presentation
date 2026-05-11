@@ -239,35 +239,40 @@ export default function Slide6() {
               stroke="rgba(217,188,130,0.4)" strokeWidth="1.2" strokeDasharray="2.5 2.5" />
           </svg>
 
-          {/* Center "Repeat" indicator */}
-          <motion.div
-            initial={{ opacity: 0, rotate: -90 }}
-            animate={{ opacity: 1, rotate: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '2px',
-              zIndex: 5,
-            }}
-          >
-            <Repeat size={22} color="rgba(217,188,130,1)" />
-            <span style={{
-              fontFamily: '"DM Sans"',
-              fontSize: '12px',
-              letterSpacing: '0.16em',
-              textTransform: 'uppercase',
-              color: 'rgba(217,188,130,0.95)',
-              fontWeight: 600,
-            }}>
-              every week
-            </span>
-          </motion.div>
+          {/* Center "Repeat" indicator. Outer div handles the centering translate;
+              the motion.div inside owns the rotate/opacity animation so Framer
+              Motion's transform doesn't overwrite the centering. */}
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 5,
+          }}>
+            <motion.div
+              initial={{ opacity: 0, rotate: -90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              transition={{ duration: 0.8, delay: 1.4 }}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '2px',
+              }}
+            >
+              <Repeat size={22} color="rgba(217,188,130,1)" />
+              <span style={{
+                fontFamily: '"DM Sans"',
+                fontSize: '12px',
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+                color: 'rgba(217,188,130,0.95)',
+                fontWeight: 600,
+              }}>
+                every week
+              </span>
+            </motion.div>
+          </div>
 
           {/* Cycle nodes */}
           {CYCLE_STEPS.map(step => <CycleNode key={step.id} step={step} />)}

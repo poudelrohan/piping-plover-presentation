@@ -14,16 +14,15 @@ const Github = ({ size = 20, color = 'currentColor' }) => (
 
 const STEPS = [
   {
-    num: '0',
+    num: '1',
     name: 'Extract PIPL',
     why: 'Pull only Piping Plover rows from multi-species sheets',
     file: '0_extract_pipl.py',
     icon: Filter,
     variant: 'special',
-    note: 'DB3 only',
   },
   {
-    num: '1',
+    num: '2',
     name: 'Add IDs',
     why: 'Give every row a unique ID and tag where it came from',
     file: '1_add_ids.py',
@@ -31,7 +30,7 @@ const STEPS = [
     variant: 'normal',
   },
   {
-    num: '2',
+    num: '3',
     name: 'Validate Geography',
     why: 'Confirm every coordinate falls inside Florida',
     file: '2_validate_geography.py',
@@ -39,7 +38,7 @@ const STEPS = [
     variant: 'normal',
   },
   {
-    num: '3',
+    num: '4',
     name: 'Required Fields',
     why: 'Drop rows missing a date or a location',
     file: '3_check_required_fields.py',
@@ -47,7 +46,7 @@ const STEPS = [
     variant: 'normal',
   },
   {
-    num: '4',
+    num: '5',
     name: 'Standardize Columns',
     why: 'Rename and reorder to one shared schema',
     file: '4_select_columns.py',
@@ -55,7 +54,7 @@ const STEPS = [
     variant: 'normal',
   },
   {
-    num: '5',
+    num: '6',
     name: 'Remove Duplicates',
     why: 'Find duplicates and log which row each one matched',
     file: '5_remove_duplicates.py',
@@ -63,7 +62,7 @@ const STEPS = [
     variant: 'normal',
   },
   {
-    num: '6',
+    num: '7',
     name: 'Final Report',
     why: 'Output a 3-sheet Excel: Clean, Removed, Summary',
     file: '6_create_final_report.py',
@@ -134,24 +133,33 @@ function CircleStepNode({ step, position }) {
   const c = variantColors[step.variant]
   const Icon = step.icon
 
+  // Outer wrapper handles centering (translate -50/-50). The motion.div inside
+  // owns its own animated transform (scale) — keeping centering on the wrapper
+  // prevents Framer Motion from overwriting the translate.
   return (
+    <div style={{
+      position: 'absolute',
+      left: position.x,
+      top: position.y,
+      transform: 'translate(-50%, -50%)',
+      zIndex: 5,
+    }}>
     <motion.div
       initial={{ opacity: 0, scale: 0.7 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay: 0.4 + parseInt(step.num) * 0.08, type: 'spring' }}
+      transition={{ duration: 0.5, delay: 0.4 + (parseInt(step.num) - 1) * 0.08, type: 'spring' }}
       style={{
-        position: 'absolute',
-        left: position.x,
-        top: position.y,
-        transform: 'translate(-50%, -50%)',
+        position: 'relative',
         width: '180px',
+        height: '150px',
         background: c.bg,
         border: `1.5px solid ${c.border}`,
         borderRadius: '14px',
         padding: '14px 14px 12px',
         backdropFilter: 'blur(8px)',
         textAlign: 'center',
-        zIndex: 5,
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       {step.note && (
@@ -223,22 +231,22 @@ function CircleStepNode({ step, position }) {
         {step.why}
       </div>
     </motion.div>
+    </div>
   )
 }
 
-// Steps arranged in a => arrow shape:
-//  - Steps 0,1,2 horizontal across the top  (the top of the "=")
-//  - Step 3 is the TIP, sitting to the right at middle height (the ">")
-//  - Steps 4,5,6 horizontal across the bottom, mirroring the top (the bottom of the "=")
-// Path: 0—1—2  (horizontal)  →  3 (diagonal SE to tip)  →  4 (diagonal SW back to bottom-left)  →  5—6 (horizontal)
+// Steps arranged in a => arrow shape with consistent spacing:
+//  - Cards are 180px wide, placed 240px apart center-to-center (60px gap)
+//  - Top row (1,2,3) and bottom row (5,6,7) share the SAME x-coordinates (vertical mirror)
+//  - Step 4 is the TIP, on the right at the vertical midpoint
 const ZIGZAG_POSITIONS = [
-  { x: 110, y: 200 },  // Step 0: top-left
-  { x: 290, y: 200 },  // Step 1: horizontal right of 0
-  { x: 470, y: 200 },  // Step 2: horizontal right of 1 (end of top row)
-  { x: 720, y: 360 },  // Step 3: TIP — diagonal SE of step 2, at middle height
-  { x: 110, y: 520 },  // Step 4: diagonal SW from tip — back to bottom-left (mirror of step 0)
-  { x: 290, y: 520 },  // Step 5: horizontal right of 4
-  { x: 470, y: 520 },  // Step 6: horizontal right of 5 (end of bottom row)
+  { x: 130, y: 200 },  // Step 1: top-left
+  { x: 370, y: 200 },  // Step 2
+  { x: 610, y: 200 },  // Step 3: end of top row
+  { x: 860, y: 380 },  // Step 4: TIP (diagonal SE of step 3)
+  { x: 610, y: 560 },  // Step 5: directly below step 3 (diagonal SW from tip)
+  { x: 370, y: 560 },  // Step 6: left of step 5
+  { x: 130, y: 560 },  // Step 7: left of step 6 (bottom-left)
 ]
 
 export default function Slide5() {
@@ -416,12 +424,12 @@ export default function Slide5() {
         <div style={{
           position: 'relative',
           width: '100%',
-          maxWidth: '940px',
-          aspectRatio: '940 / 720',
+          maxWidth: '1080px',
+          aspectRatio: '1080 / 760',
           margin: '0 auto',
         }}>
           <svg
-            viewBox="0 0 940 720"
+            viewBox="0 0 1080 760"
             preserveAspectRatio="none"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
           >
@@ -448,8 +456,8 @@ export default function Slide5() {
               const p2 = positions[i + 1]
 
               // Trim each end so the arrow stops at the edge of the node card
-              const NODE_HALF_W = 95   // half card width (~180px wide)
-              const NODE_HALF_H = 50   // half card height
+              const NODE_HALF_W = 95   // half card width (180px + small gap)
+              const NODE_HALF_H = 80   // half card height (150px + small gap)
               const dx = p2.x - p1.x
               const dy = p2.y - p1.y
               const len = Math.hypot(dx, dy)
@@ -523,42 +531,32 @@ export default function Slide5() {
               </text>
             </motion.g>
 
-            {/* END label near step 6 */}
+            {/* END label below step 7 (the last node, now bottom-left), mirroring START which sits above step 1 */}
             <motion.g
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6 }}
             >
-              {/* END label placed to the right of step 6 (last node, bottom-right of body) */}
-              {(() => {
-                const last = positions[STEPS.length - 1]
-                const labelX = last.x + 130
-                const labelY = last.y
-                return (
-                  <>
-                    <rect
-                      x={labelX - 30}
-                      y={labelY - 12}
-                      width="60"
-                      height="24"
-                      rx="12"
-                      fill="rgba(100,210,165,0.16)"
-                      stroke="rgba(100,210,165,0.55)"
-                      strokeWidth="1"
-                      strokeDasharray="3 3"
-                    />
-                    <text
-                      x={labelX}
-                      y={labelY + 5}
-                      textAnchor="middle"
-                      fill="rgba(140,235,190,1)"
-                      style={{ fontFamily: '"JetBrains Mono"', fontSize: '12px', letterSpacing: '0.16em', fontWeight: 600 }}
-                    >
-                      END
-                    </text>
-                  </>
-                )
-              })()}
+              <rect
+                x={positions[STEPS.length - 1].x - 30}
+                y={positions[STEPS.length - 1].y + 86}
+                width="60"
+                height="24"
+                rx="12"
+                fill="rgba(100,210,165,0.16)"
+                stroke="rgba(100,210,165,0.55)"
+                strokeWidth="1"
+                strokeDasharray="3 3"
+              />
+              <text
+                x={positions[STEPS.length - 1].x}
+                y={positions[STEPS.length - 1].y + 103}
+                textAnchor="middle"
+                fill="rgba(140,235,190,1)"
+                style={{ fontFamily: '"JetBrains Mono"', fontSize: '12px', letterSpacing: '0.16em', fontWeight: 600 }}
+              >
+                END
+              </text>
             </motion.g>
           </svg>
 
@@ -570,8 +568,8 @@ export default function Slide5() {
                 key={i}
                 step={step}
                 position={{
-                  x: `${(p.x / 940) * 100}%`,
-                  y: `${(p.y / 720) * 100}%`,
+                  x: `${(p.x / 1080) * 100}%`,
+                  y: `${(p.y / 760) * 100}%`,
                 }}
               />
             )

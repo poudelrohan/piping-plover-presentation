@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Notes/docs — not needed for deployment
+*.md
+
+# Claude Code / editor configs
+.claude/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

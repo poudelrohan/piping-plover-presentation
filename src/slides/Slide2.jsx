@@ -2,71 +2,14 @@ import { motion } from 'framer-motion'
 import { AlertTriangle, Waves, Home, BarChart3 } from 'lucide-react'
 import Birds from '../components/Birds'
 
-// Stylized US migration map
+// Real US states map (derived from public-domain Wikimedia "Blank US Map (states only)")
+// with Piping Plover breeding/wintering ranges and migration arrows baked in.
 const MigrationMap = () => (
-  <svg viewBox="0 0 400 240" style={{ width: '100%', height: 'auto' }}>
-    <defs>
-      <linearGradient id="breedingGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="rgba(143,184,217,0.55)" />
-        <stop offset="100%" stopColor="rgba(143,184,217,0.18)" />
-      </linearGradient>
-      <linearGradient id="winterGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="rgba(212,112,74,0.18)" />
-        <stop offset="100%" stopColor="rgba(212,112,74,0.55)" />
-      </linearGradient>
-      <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5"
-        markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M0,0 L10,5 L0,10 z" fill="rgba(217,188,130,0.7)" />
-      </marker>
-    </defs>
-
-    {/* Simplified US outline */}
-    <path
-      d="M40,90 L60,75 L90,68 L130,62 L175,58 L220,55 L265,57 L305,62 L340,68 L360,80
-         L362,108 L355,135 L345,158 L325,175 L300,185 L270,195 L240,200 L215,210 L190,212
-         L170,210 L155,205 L140,200 L125,195 L110,188 L95,178 L78,165 L62,150 L48,130 L40,108 Z"
-      fill="rgba(255,255,255,0.04)"
-      stroke="rgba(200,223,240,0.25)"
-      strokeWidth="1"
-    />
-    {/* Florida hook */}
-    <path
-      d="M285,178 L295,200 L300,218 L295,225 L285,222 L278,210 L272,195 Z"
-      fill="rgba(212,112,74,0.18)"
-      stroke="rgba(212,112,74,0.55)"
-      strokeWidth="1.2"
-    />
-
-    {/* Breeding zones (north) */}
-    <ellipse cx="180" cy="78" rx="55" ry="14" fill="url(#breedingGrad)" stroke="rgba(143,184,217,0.5)" strokeWidth="1" strokeDasharray="3 2" />
-    <ellipse cx="100" cy="92" rx="32" ry="12" fill="url(#breedingGrad)" stroke="rgba(143,184,217,0.4)" strokeWidth="1" strokeDasharray="3 2" />
-    <ellipse cx="285" cy="92" rx="38" ry="13" fill="url(#breedingGrad)" stroke="rgba(143,184,217,0.4)" strokeWidth="1" strokeDasharray="3 2" />
-
-    {/* Wintering zones (south) */}
-    <ellipse cx="225" cy="195" rx="80" ry="12" fill="url(#winterGrad)" stroke="rgba(212,112,74,0.5)" strokeWidth="1" strokeDasharray="3 2" />
-
-    {/* Migration arrows */}
-    <path d="M180,90 Q175,140 215,185" stroke="rgba(217,188,130,0.55)" strokeWidth="1.4" fill="none" strokeDasharray="4 3" markerEnd="url(#arrowhead)" />
-    <path d="M100,100 Q140,150 200,190" stroke="rgba(217,188,130,0.45)" strokeWidth="1.2" fill="none" strokeDasharray="4 3" markerEnd="url(#arrowhead)" />
-    <path d="M285,100 Q280,140 250,185" stroke="rgba(217,188,130,0.45)" strokeWidth="1.2" fill="none" strokeDasharray="4 3" markerEnd="url(#arrowhead)" />
-
-    {/* Labels */}
-    <text x="180" y="46" textAnchor="middle" fill="rgba(143,184,217,0.85)"
-      style={{ fontFamily: '"DM Sans"', fontSize: '9px', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-      Breeding Range
-    </text>
-    <text x="225" y="232" textAnchor="middle" fill="rgba(232,145,110,0.9)"
-      style={{ fontFamily: '"DM Sans"', fontSize: '9px', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-      Wintering Range · Florida
-    </text>
-
-    {/* Florida pin */}
-    <circle cx="290" cy="205" r="3" fill="rgba(232,145,110,1)" />
-    <circle cx="290" cy="205" r="6" fill="none" stroke="rgba(232,145,110,0.6)" strokeWidth="1">
-      <animate attributeName="r" from="3" to="14" dur="2s" repeatCount="indefinite" />
-      <animate attributeName="opacity" from="0.8" to="0" dur="2s" repeatCount="indefinite" />
-    </circle>
-  </svg>
+  <img
+    src="/images/us-piping-plover-map.svg"
+    alt="Piping Plover US migration map: breeding range in the northern US, wintering range along the Gulf and southern Atlantic coasts, focal site in Florida"
+    style={{ width: '100%', height: 'auto', display: 'block' }}
+  />
 )
 
 const FACTS = [

@@ -1,40 +1,6 @@
 import { motion } from 'framer-motion'
 import Birds from '../components/Birds'
 
-const USFWSBadge = () => (
-  <div style={{
-    position: 'absolute',
-    top: '40px',
-    left: '48px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '16px',
-    zIndex: 20,
-  }}>
-    {/* Shield */}
-    <div style={{
-      width: '70px',
-      height: '78px',
-      background: 'rgba(217,188,130,0.12)',
-      border: '1.5px solid rgba(217,188,130,0.3)',
-      borderRadius: '5px 5px 35px 35px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"
-          stroke="rgba(217,188,130,0.7)" strokeWidth="1.5" fill="none"/>
-        <path d="M9 12l2 2 4-4" stroke="rgba(217,188,130,0.7)" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    </div>
-    <div>
-      <div style={{ fontFamily: '"DM Sans"', fontSize: '14px', letterSpacing: '0.15em', color: 'rgba(217,188,130,0.85)', textTransform: 'uppercase', fontWeight: 500 }}>United States</div>
-      <div style={{ fontFamily: '"DM Sans"', fontSize: '16px', color: 'rgba(217,188,130,1)', marginTop: '3px', letterSpacing: '0.03em', fontWeight: 500 }}>Fish &amp; Wildlife Service</div>
-    </div>
-  </div>
-)
-
 // Horizon gradient wave at the bottom
 const HorizonWave = () => (
   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '200px', zIndex: 1 }}>
@@ -89,11 +55,10 @@ export default function Slide1() {
         zIndex: 1,
       }} />
 
-      <USFWSBadge />
       <Birds density="normal" />
       <HorizonWave />
 
-      {/* Symposium label top-right (single line) */}
+      {/* Date stamp top-left */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -101,10 +66,7 @@ export default function Slide1() {
         style={{
           position: 'absolute',
           top: '54px',
-          right: '48px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '14px',
+          left: '48px',
           zIndex: 20,
           whiteSpace: 'nowrap',
         }}
@@ -119,7 +81,21 @@ export default function Slide1() {
         }}>
           Spring 2026
         </span>
-        <span style={{ color: 'rgba(217,188,130,0.4)', fontSize: '11px' }}>◆</span>
+      </motion.div>
+
+      {/* Symposium label top-right */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        style={{
+          position: 'absolute',
+          top: '54px',
+          right: '48px',
+          zIndex: 20,
+          whiteSpace: 'nowrap',
+        }}
+      >
         <span style={{
           fontFamily: '"DM Sans"',
           fontSize: '15px',

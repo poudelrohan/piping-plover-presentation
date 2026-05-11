@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Nav from './components/Nav'
+import FooterLogos from './components/FooterLogos'
 import Slide1 from './slides/Slide1'
 import Slide2 from './slides/Slide2'
 import Slide3 from './slides/Slide3'
@@ -137,6 +138,8 @@ export default function App() {
           onNext={goNext}
           onPrev={goPrev}
         />
+
+        <FooterLogos />
       </div>
     </div>
   )

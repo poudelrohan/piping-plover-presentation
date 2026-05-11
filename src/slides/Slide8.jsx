@@ -119,7 +119,7 @@ export default function Slide8() {
           color: 'rgba(217,188,130,1)',
           letterSpacing: '0.01em',
         }}>
-          Questions?
+          Questions or Comments?
         </span>
       </motion.div>
     </div>

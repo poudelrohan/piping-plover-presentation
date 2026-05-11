@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion'
 import { AlertTriangle, Waves, Home, BarChart3 } from 'lucide-react'
 import Birds from '../components/Birds'
+import piplPhoto from '../assets/piping-plover.jpg'
+import pipMapSvg from '../assets/us-piping-plover-map.svg'
 
 // Real US states map (derived from public-domain Wikimedia "Blank US Map (states only)")
 // with Piping Plover breeding/wintering ranges and migration arrows baked in.
 const MigrationMap = () => (
   <img
-    src="/images/us-piping-plover-map.svg"
+    src={pipMapSvg}
     alt="Piping Plover US migration map: breeding range in the northern US, wintering range along the Gulf and southern Atlantic coasts, focal site in Florida"
     style={{ width: '100%', height: 'auto', display: 'block' }}
   />
@@ -67,7 +69,7 @@ export default function Slide2() {
           }}
         >
           <img
-            src="/images/piping-plover.jpg"
+            src={piplPhoto}
             alt="Piping Plover (Charadrius melodus)"
             style={{
               width: '100%',

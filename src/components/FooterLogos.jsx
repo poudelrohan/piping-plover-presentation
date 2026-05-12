@@ -25,7 +25,7 @@ export default function FooterLogos() {
       style={{
         position: 'absolute',
         bottom: '22px',
-        left: '26px',
+        right: '26px',
         display: 'flex',
         gap: '10px',
         zIndex: 50,

@@ -15,12 +15,12 @@ const kbdStyle = {
 export default function Nav({ current, total, onPrev, onNext }) {
   return (
     <>
-      {/* Slide counter — bottom right */}
+      {/* Slide counter — bottom left */}
       <div
         style={{
           position: 'absolute',
           bottom: '28px',
-          right: '36px',
+          left: '36px',
           zIndex: 50,
           fontFamily: '"JetBrains Mono", monospace',
           fontSize: '12px',

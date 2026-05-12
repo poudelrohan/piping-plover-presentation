@@ -51,6 +51,7 @@ export default function Slide2() {
         flex: '0 0 44%',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'center',
         gap: '24px',
         zIndex: 10,
       }}>

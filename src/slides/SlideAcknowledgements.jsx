@@ -34,12 +34,14 @@ export default function SlideAcknowledgements() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      justifyContent: 'center',
       padding: '64px 80px 110px',
+      gap: '52px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '44px', zIndex: 10, maxWidth: '1200px' }}>
+      <div style={{ textAlign: 'center', zIndex: 10, maxWidth: '1200px' }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -97,7 +99,7 @@ export default function SlideAcknowledgements() {
             alignItems: 'center',
             textAlign: 'center',
             gap: '20px',
-            minHeight: '320px',
+            minHeight: '420px',
           }}
         >
           <div style={{ display: 'flex', gap: '10px' }}>
@@ -143,7 +145,7 @@ export default function SlideAcknowledgements() {
             alignItems: 'center',
             textAlign: 'center',
             gap: '20px',
-            minHeight: '320px',
+            minHeight: '420px',
           }}
         >
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
@@ -201,7 +203,7 @@ export default function SlideAcknowledgements() {
             alignItems: 'center',
             textAlign: 'center',
             gap: '20px',
-            minHeight: '320px',
+            minHeight: '420px',
           }}
         >
           <div style={{

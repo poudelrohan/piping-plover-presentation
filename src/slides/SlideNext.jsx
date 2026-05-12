@@ -67,43 +67,43 @@ function Section({ eyebrow, title, items, accent }) {
               transition={{ duration: 0.5, delay: 0.5 + i * 0.13 }}
               style={{
                 display: 'flex',
-                gap: '16px',
+                gap: '18px',
                 alignItems: 'flex-start',
-                padding: '18px 22px',
+                padding: '24px 26px',
                 background: isHighlight ? 'rgba(212,112,74,0.13)' : 'rgba(22,61,106,0.35)',
                 border: `1px solid ${isHighlight ? 'rgba(212,112,74,0.5)' : 'rgba(143,184,217,0.25)'}`,
                 borderLeft: `4px solid ${accent}`,
-                borderRadius: '12px',
+                borderRadius: '14px',
               }}
             >
               <div style={{
                 flexShrink: 0,
-                width: '44px',
-                height: '44px',
-                borderRadius: '11px',
+                width: '52px',
+                height: '52px',
+                borderRadius: '12px',
                 background: isHighlight ? 'rgba(212,112,74,0.22)' : 'rgba(143,184,217,0.18)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-                <Icon size={20} color={accent} />
+                <Icon size={24} color={accent} />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{
                   fontFamily: '"Playfair Display"',
-                  fontSize: 'clamp(18px, 1.5vw, 22px)',
+                  fontSize: 'clamp(20px, 1.7vw, 26px)',
                   fontWeight: 600,
                   color: '#F4EFE4',
-                  marginBottom: '5px',
+                  marginBottom: '7px',
                   lineHeight: 1.2,
                 }}>
                   {item.title}
                 </div>
                 <p style={{
                   fontFamily: '"DM Sans"',
-                  fontSize: 'clamp(14px, 1.2vw, 16px)',
+                  fontSize: 'clamp(15px, 1.3vw, 18px)',
                   color: 'rgba(200,223,240,0.88)',
-                  lineHeight: 1.5,
+                  lineHeight: 1.55,
                 }}>
                   {item.text}
                 </p>
@@ -127,12 +127,14 @@ export default function SlideNext() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      justifyContent: 'center',
       padding: '64px 80px 110px',
+      gap: '46px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '36px', zIndex: 10, maxWidth: '1200px' }}>
+      <div style={{ textAlign: 'center', zIndex: 10, maxWidth: '1200px' }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

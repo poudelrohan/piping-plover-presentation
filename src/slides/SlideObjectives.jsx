@@ -34,12 +34,14 @@ export default function SlideObjectives() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      justifyContent: 'center',
       padding: '64px 80px 110px',
+      gap: '46px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '36px', zIndex: 10, maxWidth: '1200px' }}>
+      <div style={{ textAlign: 'center', zIndex: 10, maxWidth: '1200px' }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -108,14 +110,14 @@ export default function SlideObjectives() {
               style={{
                 background: 'rgba(11,35,64,0.55)',
                 border: '1.5px solid rgba(143,184,217,0.28)',
-                borderRadius: '16px',
-                padding: '30px 28px',
+                borderRadius: '18px',
+                padding: '36px 30px',
                 backdropFilter: 'blur(10px)',
                 display: 'flex',
                 flexDirection: 'column',
                 position: 'relative',
                 overflow: 'hidden',
-                minHeight: '270px',
+                minHeight: '380px',
               }}
             >
               {/* Soft glow corner */}
@@ -134,11 +136,11 @@ export default function SlideObjectives() {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                marginBottom: '24px',
+                marginBottom: '32px',
               }}>
                 <span style={{
                   fontFamily: '"JetBrains Mono"',
-                  fontSize: '14px',
+                  fontSize: '16px',
                   letterSpacing: '0.16em',
                   color: 'rgba(232,145,110,0.95)',
                   fontWeight: 600,
@@ -146,26 +148,26 @@ export default function SlideObjectives() {
                   {g.n}
                 </span>
                 <div style={{
-                  width: '52px',
-                  height: '52px',
-                  borderRadius: '12px',
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '14px',
                   background: 'rgba(212,112,74,0.18)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
-                  <Icon size={24} color="rgba(232,145,110,1)" />
+                  <Icon size={28} color="rgba(232,145,110,1)" />
                 </div>
               </div>
 
               {/* Title */}
               <div style={{
                 fontFamily: '"Playfair Display"',
-                fontSize: 'clamp(22px, 1.9vw, 27px)',
+                fontSize: 'clamp(24px, 2.1vw, 30px)',
                 fontWeight: 600,
                 color: '#F4EFE4',
                 lineHeight: 1.2,
-                marginBottom: '14px',
+                marginBottom: '16px',
               }}>
                 {g.title}
               </div>
@@ -173,7 +175,7 @@ export default function SlideObjectives() {
               {/* Description */}
               <p style={{
                 fontFamily: '"DM Sans"',
-                fontSize: 'clamp(15px, 1.25vw, 17px)',
+                fontSize: 'clamp(16px, 1.35vw, 19px)',
                 color: 'rgba(200,223,240,0.85)',
                 lineHeight: 1.55,
                 flex: 1,

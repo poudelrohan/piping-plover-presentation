@@ -49,12 +49,14 @@ export default function SlideResults() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '60px 80px 110px',
+      justifyContent: 'center',
+      padding: '70px 80px 110px',
+      gap: '46px',
     }}>
       <Birds density="sparse" />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '34px', zIndex: 10, maxWidth: '1200px' }}>
+      <div style={{ textAlign: 'center', zIndex: 10, maxWidth: '1200px' }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -125,15 +127,15 @@ export default function SlideResults() {
               style={{
                 background: 'rgba(11,35,64,0.55)',
                 border: `1.5px solid ${isWip ? 'rgba(212,112,74,0.45)' : 'rgba(143,184,217,0.3)'}`,
-                borderRadius: '16px',
-                padding: '24px 22px 26px',
+                borderRadius: '18px',
+                padding: '36px 28px 38px',
                 backdropFilter: 'blur(10px)',
                 display: 'flex',
                 flexDirection: 'column',
                 position: 'relative',
                 overflow: 'hidden',
-                minHeight: '300px',
-                borderLeft: `4px solid ${isWip ? 'rgba(212,112,74,0.7)' : 'rgba(100,210,165,0.55)'}`,
+                minHeight: '440px',
+                borderLeft: `5px solid ${isWip ? 'rgba(212,112,74,0.7)' : 'rgba(100,210,165,0.55)'}`,
               }}
             >
               {/* Top row: db icon + status badge */}
@@ -179,11 +181,11 @@ export default function SlideResults() {
               {/* Database name */}
               <div style={{
                 fontFamily: '"Playfair Display"',
-                fontSize: 'clamp(18px, 1.5vw, 21px)',
+                fontSize: 'clamp(20px, 1.7vw, 24px)',
                 fontWeight: 600,
                 color: '#F4EFE4',
                 lineHeight: 1.2,
-                marginBottom: '3px',
+                marginBottom: '4px',
               }}>
                 {db.name}
               </div>
@@ -191,9 +193,9 @@ export default function SlideResults() {
               {/* Source */}
               <div style={{
                 fontFamily: '"DM Sans"',
-                fontSize: '12.5px',
+                fontSize: 'clamp(13px, 1.05vw, 15px)',
                 color: 'rgba(200,223,240,0.7)',
-                marginBottom: '18px',
+                marginBottom: '24px',
                 lineHeight: 1.3,
               }}>
                 {db.source}
@@ -202,12 +204,12 @@ export default function SlideResults() {
               {/* Big number */}
               <div style={{
                 fontFamily: '"Playfair Display"',
-                fontSize: 'clamp(40px, 4vw, 56px)',
+                fontSize: 'clamp(54px, 5.4vw, 76px)',
                 fontWeight: 600,
                 color: isWip ? 'rgba(232,145,110,1)' : 'rgba(217,188,130,1)',
                 lineHeight: 1,
                 marginTop: 'auto',
-                marginBottom: '6px',
+                marginBottom: '10px',
                 letterSpacing: '-0.01em',
               }}>
                 {db.bigNumber}
@@ -216,7 +218,7 @@ export default function SlideResults() {
               {/* Caption */}
               <div style={{
                 fontFamily: '"DM Sans"',
-                fontSize: 'clamp(13px, 1.05vw, 15px)',
+                fontSize: 'clamp(15px, 1.25vw, 18px)',
                 color: 'rgba(200,223,240,0.78)',
                 letterSpacing: '0.04em',
               }}>

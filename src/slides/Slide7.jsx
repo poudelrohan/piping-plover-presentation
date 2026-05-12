@@ -125,8 +125,8 @@ const FloridaMap = () => (
         x={l.x}
         y={l.y}
         textAnchor={l.anchor}
-        fill="rgba(232,180,140,0.9)"
-        style={{ fontFamily: '"DM Sans"', fontSize: '4.5px', letterSpacing: '0.06em', fontWeight: 500 }}
+        fill="rgba(232,180,140,0.95)"
+        style={{ fontFamily: '"DM Sans"', fontSize: '8px', letterSpacing: '0.06em', fontWeight: 600 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.4 + i * 0.1 }}
@@ -135,15 +135,15 @@ const FloridaMap = () => (
       </motion.text>
     ))}
 
-    {/* Tiny legend in the corner */}
+    {/* Legend in the corner */}
     <motion.g
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, delay: 1.8 }}
     >
-      <circle cx="640" cy="599" r="2.2" fill="rgba(255,180,140,1)" />
-      <text x="645" y="601" fill="rgba(200,223,240,0.85)"
-        style={{ fontFamily: '"DM Sans"', fontSize: '4.5px', letterSpacing: '0.04em' }}>
+      <circle cx="640" cy="599" r="3.2" fill="rgba(255,180,140,1)" />
+      <text x="647" y="602" fill="rgba(200,223,240,0.92)"
+        style={{ fontFamily: '"DM Sans"', fontSize: '7px', letterSpacing: '0.04em', fontWeight: 500 }}>
         Piping Plover sightings
       </text>
     </motion.g>
@@ -247,13 +247,13 @@ export default function Slide7() {
             marginBottom: '10px',
             flexShrink: 0,
           }}>
-            <Map size={15} color="rgba(217,188,130,0.85)" />
+            <Map size={18} color="rgba(217,188,130,0.85)" />
             <span style={{
               fontFamily: '"DM Sans"',
-              fontSize: '11px',
+              fontSize: '14px',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: 'rgba(217,188,130,0.75)',
+              color: 'rgba(217,188,130,0.78)',
               fontWeight: 600,
             }}>
               ArcGIS · Florida · Piping Plover Sightings
@@ -286,18 +286,18 @@ export default function Slide7() {
           <div>
             <div style={{
               fontFamily: '"DM Sans"',
-              fontSize: '13px',
+              fontSize: '15px',
               letterSpacing: '0.22em',
               textTransform: 'uppercase',
               color: 'rgba(232,145,110,0.95)',
               fontWeight: 500,
-              marginBottom: '12px',
+              marginBottom: '14px',
             }}>
               Why it matters
             </div>
             <div style={{
               fontFamily: '"Playfair Display"',
-              fontSize: 'clamp(24px, 2.2vw, 32px)',
+              fontSize: 'clamp(28px, 2.5vw, 38px)',
               fontWeight: 600,
               color: '#F4EFE4',
               lineHeight: 1.25,
@@ -333,9 +333,9 @@ export default function Slide7() {
                   transition={{ duration: 0.5, delay: 0.8 + i * 0.15 }}
                   style={{
                     display: 'flex',
-                    gap: '14px',
+                    gap: '16px',
                     alignItems: 'flex-start',
-                    padding: '14px 18px',
+                    padding: '20px 24px',
                     background: 'rgba(22,61,106,0.35)',
                     border: '1px solid rgba(143,184,217,0.22)',
                     borderRadius: '12px',
@@ -344,32 +344,32 @@ export default function Slide7() {
                 >
                   <div style={{
                     flexShrink: 0,
-                    width: '38px',
-                    height: '38px',
-                    borderRadius: '10px',
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '11px',
                     background: 'rgba(212,112,74,0.18)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}>
-                    <Icon size={18} color="rgba(232,145,110,1)" />
+                    <Icon size={22} color="rgba(232,145,110,1)" />
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{
                       fontFamily: '"Playfair Display"',
-                      fontSize: 'clamp(17px, 1.5vw, 20px)',
+                      fontSize: 'clamp(20px, 1.8vw, 25px)',
                       fontWeight: 600,
                       color: '#F4EFE4',
-                      marginBottom: '4px',
+                      marginBottom: '6px',
                       lineHeight: 1.2,
                     }}>
                       {item.title}
                     </div>
                     <div style={{
                       fontFamily: '"DM Sans"',
-                      fontSize: 'clamp(13px, 1.15vw, 15px)',
-                      color: 'rgba(200,223,240,0.85)',
-                      lineHeight: 1.45,
+                      fontSize: 'clamp(15px, 1.35vw, 18px)',
+                      color: 'rgba(200,223,240,0.88)',
+                      lineHeight: 1.5,
                     }}>
                       {item.text}
                     </div>

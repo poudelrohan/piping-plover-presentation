@@ -35,18 +35,18 @@ function Section({ eyebrow, title, items, accent }) {
       <div>
         <div style={{
           fontFamily: '"DM Sans"',
-          fontSize: '12px',
+          fontSize: '14px',
           letterSpacing: '0.22em',
           textTransform: 'uppercase',
           color: 'rgba(232,145,110,0.92)',
           fontWeight: 500,
-          marginBottom: '8px',
+          marginBottom: '10px',
         }}>
           {eyebrow}
         </div>
         <div style={{
           fontFamily: '"Playfair Display"',
-          fontSize: 'clamp(28px, 2.4vw, 36px)',
+          fontSize: 'clamp(30px, 2.6vw, 40px)',
           fontWeight: 600,
           color: '#F4EFE4',
           lineHeight: 1.2,
@@ -91,17 +91,17 @@ function Section({ eyebrow, title, items, accent }) {
               <div style={{ flex: 1 }}>
                 <div style={{
                   fontFamily: '"Playfair Display"',
-                  fontSize: 'clamp(20px, 1.7vw, 26px)',
+                  fontSize: 'clamp(22px, 1.9vw, 28px)',
                   fontWeight: 600,
                   color: '#F4EFE4',
-                  marginBottom: '7px',
+                  marginBottom: '8px',
                   lineHeight: 1.2,
                 }}>
                   {item.title}
                 </div>
                 <p style={{
                   fontFamily: '"DM Sans"',
-                  fontSize: 'clamp(15px, 1.3vw, 18px)',
+                  fontSize: 'clamp(17px, 1.5vw, 21px)',
                   color: 'rgba(200,223,240,0.88)',
                   lineHeight: 1.55,
                 }}>

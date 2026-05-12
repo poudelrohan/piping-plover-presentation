@@ -151,19 +151,19 @@ export default function Slide3() {
           <div style={{
             background: 'rgba(217,188,130,0.15)',
             border: '1.5px solid rgba(217,188,130,0.5)',
-            borderRadius: '28px',
-            padding: '11px 26px',
+            borderRadius: '32px',
+            padding: '13px 30px',
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
+            gap: '12px',
             fontFamily: '"DM Sans"',
-            fontSize: '14px',
+            fontSize: '16px',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
             color: 'rgba(217,188,130,1)',
             fontWeight: 500,
           }}>
-            <FileSpreadsheet size={17} />
+            <FileSpreadsheet size={20} />
             Raw Survey Data
           </div>
         </motion.div>
@@ -227,20 +227,20 @@ export default function Slide3() {
                 }}
               >
                 <div style={{
-                  width: '54px',
-                  height: '54px',
-                  borderRadius: '12px',
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '14px',
                   background: src.bg.replace(/[\d.]+\)/, '0.2)'),
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  margin: '0 auto 14px',
+                  margin: '0 auto 18px',
                 }}>
-                  <Icon size={26} color={src.color} />
+                  <Icon size={32} color={src.color} />
                 </div>
                 <div style={{
                   fontFamily: '"Playfair Display"',
-                  fontSize: 'clamp(20px, 1.7vw, 26px)',
+                  fontSize: 'clamp(22px, 1.9vw, 30px)',
                   fontWeight: 600,
                   color: '#F4EFE4',
                   lineHeight: 1.2,
@@ -330,15 +330,15 @@ export default function Slide3() {
                     background: 'rgba(11,35,64,0.55)',
                     border: '1px solid rgba(143,184,217,0.3)',
                     borderRadius: '10px',
-                    padding: '12px 18px',
+                    padding: '14px 22px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '10px',
+                    gap: '12px',
                     fontFamily: '"JetBrains Mono"',
-                    fontSize: '15px',
+                    fontSize: '17px',
                     color: 'rgba(200,223,240,0.95)',
                   }}>
-                    <FileSpreadsheet size={15} color="rgba(143,184,217,0.85)" />
+                    <FileSpreadsheet size={18} color="rgba(143,184,217,0.85)" />
                     {src.childLabel}
                   </div>
                 </motion.div>
@@ -374,11 +374,11 @@ export default function Slide3() {
                       style={{
                         background: 'rgba(212,112,74,0.2)',
                         border: '1px solid rgba(212,112,74,0.55)',
-                        borderRadius: '7px',
-                        padding: '8px 0',
+                        borderRadius: '8px',
+                        padding: '10px 0',
                         textAlign: 'center',
                         fontFamily: '"JetBrains Mono"',
-                        fontSize: '14px',
+                        fontSize: '17px',
                         color: 'rgba(245,180,150,1)',
                         fontWeight: 500,
                       }}
@@ -393,7 +393,7 @@ export default function Slide3() {
                   transition={{ delay: 1.8 }}
                   style={{
                     fontFamily: '"DM Sans"',
-                    fontSize: '14px',
+                    fontSize: '17px',
                     color: 'rgba(232,145,110,1)',
                     letterSpacing: '0.04em',
                     textAlign: 'center',
@@ -430,22 +430,22 @@ export default function Slide3() {
           }}>
             <span style={{
               fontFamily: '"DM Sans"',
-              fontSize: '16px',
+              fontSize: '19px',
               color: 'rgba(245,180,150,1)',
               letterSpacing: '0.01em',
               fontWeight: 500,
             }}>
               Each Winter Bird Survey file contains 3 internal sheets:
             </span>
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div style={{ display: 'flex', gap: '10px' }}>
               {['DS1 · Flock data', 'DS2 · Observer summary', 'DS3 · Banded resights'].map((s, i) => (
                 <span key={i} style={{
                   background: 'rgba(212,112,74,0.25)',
                   border: '1px solid rgba(212,112,74,0.55)',
-                  borderRadius: '6px',
-                  padding: '6px 12px',
+                  borderRadius: '7px',
+                  padding: '8px 14px',
                   fontFamily: '"JetBrains Mono"',
-                  fontSize: '13px',
+                  fontSize: '15px',
                   color: 'rgba(250,200,170,1)',
                   fontWeight: 500,
                 }}>
@@ -465,8 +465,8 @@ export default function Slide3() {
             marginTop: '20px',
             textAlign: 'center',
             fontFamily: '"DM Sans"',
-            fontSize: '17px',
-            color: 'rgba(200,223,240,0.85)',
+            fontSize: '20px',
+            color: 'rgba(200,223,240,0.88)',
             letterSpacing: '0.01em',
             zIndex: 10,
           }}

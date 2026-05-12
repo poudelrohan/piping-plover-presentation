@@ -57,15 +57,15 @@ const CYCLE_STEPS = [
   },
 ]
 
-const RADIUS = 135
-const CENTER = 200
+const RADIUS = 175
+const CENTER = 240
 
 function CycleNode({ step }) {
   const Icon = step.icon
   const angleRad = (step.angle * Math.PI) / 180
   const x = CENTER + RADIUS * Math.cos(angleRad)
   const y = CENTER + RADIUS * Math.sin(angleRad)
-  const size = step.isMain ? 125 : 105
+  const size = step.isMain ? 165 : 140
 
   return (
     <motion.div
@@ -92,24 +92,24 @@ function CycleNode({ step }) {
         zIndex: 10,
       }}
     >
-      <Icon size={step.isMain ? 22 : 19} color={step.color} />
+      <Icon size={step.isMain ? 28 : 24} color={step.color} />
       <div style={{
         fontFamily: '"Playfair Display"',
-        fontSize: step.isMain ? '14px' : '12.5px',
+        fontSize: step.isMain ? '18px' : '16px',
         fontWeight: 600,
         color: '#F4EFE4',
-        marginTop: '4px',
+        marginTop: '6px',
         lineHeight: 1.15,
       }}>
         {step.label}
       </div>
       <div style={{
         fontFamily: '"DM Sans"',
-        fontSize: '10px',
+        fontSize: '12.5px',
         color: 'rgba(200,223,240,0.88)',
-        marginTop: '3px',
-        lineHeight: 1.25,
-        padding: '0 6px',
+        marginTop: '4px',
+        lineHeight: 1.3,
+        padding: '0 8px',
       }}>
         {step.subtitle}
       </div>
@@ -195,12 +195,12 @@ export default function Slide6() {
         {/* Cycle diagram (centered horizontally) */}
         <div style={{
           position: 'relative',
-          width: '400px',
-          height: '400px',
+          width: '480px',
+          height: '480px',
           flexShrink: 0,
         }}>
           {/* Background circle */}
-          <svg viewBox="0 0 400 400" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+          <svg viewBox="0 0 480 480" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
             <defs>
               <marker id="cycle-arrow" viewBox="0 0 10 10" refX="6" refY="5"
                 markerWidth="5" markerHeight="5" orient="auto-start-reverse">
@@ -235,8 +235,8 @@ export default function Slide6() {
             })}
 
             {/* Inner repeat circle — sized to comfortably hold the icon + label */}
-            <circle cx={CENTER} cy={CENTER} r="44" fill="rgba(217,188,130,0.1)"
-              stroke="rgba(217,188,130,0.4)" strokeWidth="1.2" strokeDasharray="2.5 2.5" />
+            <circle cx={CENTER} cy={CENTER} r="60" fill="rgba(217,188,130,0.1)"
+              stroke="rgba(217,188,130,0.4)" strokeWidth="1.5" strokeDasharray="3 3" />
           </svg>
 
           {/* Center "Repeat" indicator. Outer div handles the centering translate;
@@ -260,10 +260,10 @@ export default function Slide6() {
                 gap: '2px',
               }}
             >
-              <Repeat size={22} color="rgba(217,188,130,1)" />
+              <Repeat size={30} color="rgba(217,188,130,1)" />
               <span style={{
                 fontFamily: '"DM Sans"',
-                fontSize: '12px',
+                fontSize: '15px',
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
                 color: 'rgba(217,188,130,0.95)',
@@ -299,10 +299,10 @@ export default function Slide6() {
               gap: '14px',
               marginBottom: '20px',
             }}>
-              <TeamsIcon size={26} />
+              <TeamsIcon size={32} />
               <span style={{
                 fontFamily: '"Playfair Display"',
-                fontSize: '23px',
+                fontSize: '28px',
                 fontWeight: 600,
                 color: '#F4EFE4',
               }}>
@@ -311,7 +311,7 @@ export default function Slide6() {
               <span style={{
                 marginLeft: 'auto',
                 fontFamily: '"DM Sans"',
-                fontSize: '12px',
+                fontSize: '14px',
                 color: 'rgba(217,188,130,0.85)',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
@@ -351,26 +351,26 @@ export default function Slide6() {
                   >
                     <div style={{
                       flexShrink: 0,
-                      width: '42px',
-                      height: '42px',
-                      borderRadius: '10px',
+                      width: '50px',
+                      height: '50px',
+                      borderRadius: '12px',
                       background: 'rgba(212,112,74,0.22)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                      <Icon size={19} color="rgba(232,145,110,1)" />
+                      <Icon size={24} color="rgba(232,145,110,1)" />
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{
                         display: 'flex',
                         alignItems: 'baseline',
-                        gap: '10px',
-                        marginBottom: '5px',
+                        gap: '12px',
+                        marginBottom: '6px',
                       }}>
                         <span style={{
                           fontFamily: '"JetBrains Mono"',
-                          fontSize: '12px',
+                          fontSize: '14px',
                           color: 'rgba(232,145,110,1)',
                           letterSpacing: '0.06em',
                           fontWeight: 600,
@@ -379,7 +379,7 @@ export default function Slide6() {
                         </span>
                         <span style={{
                           fontFamily: '"Playfair Display"',
-                          fontSize: '19px',
+                          fontSize: '23px',
                           fontWeight: 600,
                           color: '#F4EFE4',
                         }}>
@@ -388,7 +388,7 @@ export default function Slide6() {
                       </div>
                       <p style={{
                         fontFamily: '"DM Sans"',
-                        fontSize: '16px',
+                        fontSize: '18px',
                         fontWeight: 400,
                         color: 'rgba(200,223,240,0.92)',
                         lineHeight: 1.55,

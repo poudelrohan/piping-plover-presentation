@@ -146,28 +146,28 @@ export default function SlideResults() {
                 marginBottom: '18px',
               }}>
                 <div style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '11px',
                   background: 'rgba(143,184,217,0.16)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
-                  <Database size={18} color="rgba(143,184,217,1)" />
+                  <Database size={22} color="rgba(143,184,217,1)" />
                 </div>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '6px',
-                  padding: '4px 10px',
+                  gap: '7px',
+                  padding: '5px 12px',
                   background: s.bg,
                   borderRadius: '14px',
                 }}>
-                  <StatusIcon size={13} color={s.color} />
+                  <StatusIcon size={15} color={s.color} />
                   <span style={{
                     fontFamily: '"DM Sans"',
-                    fontSize: '11px',
+                    fontSize: '13px',
                     letterSpacing: '0.10em',
                     textTransform: 'uppercase',
                     color: s.color,
@@ -193,10 +193,10 @@ export default function SlideResults() {
               {/* Source */}
               <div style={{
                 fontFamily: '"DM Sans"',
-                fontSize: 'clamp(13px, 1.05vw, 15px)',
-                color: 'rgba(200,223,240,0.7)',
-                marginBottom: '24px',
-                lineHeight: 1.3,
+                fontSize: 'clamp(14px, 1.15vw, 17px)',
+                color: 'rgba(200,223,240,0.75)',
+                marginBottom: '26px',
+                lineHeight: 1.35,
               }}>
                 {db.source}
               </div>

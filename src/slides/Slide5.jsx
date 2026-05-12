@@ -150,12 +150,12 @@ function CircleStepNode({ step, position }) {
       transition={{ duration: 0.5, delay: 0.4 + (parseInt(step.num) - 1) * 0.08, type: 'spring' }}
       style={{
         position: 'relative',
-        width: '180px',
-        height: '150px',
+        width: '210px',
+        height: '190px',
         background: c.bg,
         border: `1.5px solid ${c.border}`,
         borderRadius: '14px',
-        padding: '14px 14px 12px',
+        padding: '16px 16px 14px',
         backdropFilter: 'blur(8px)',
         textAlign: 'center',
         display: 'flex',
@@ -192,41 +192,41 @@ function CircleStepNode({ step, position }) {
       }}>
         <span style={{
           fontFamily: '"JetBrains Mono"',
-          fontSize: '13px',
+          fontSize: '17px',
           color: c.accent,
           fontWeight: 600,
         }}>
           .{step.num}
         </span>
         <div style={{
-          width: '30px',
-          height: '30px',
-          borderRadius: '8px',
+          width: '36px',
+          height: '36px',
+          borderRadius: '9px',
           background: c.iconBg,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-          <Icon size={16} color={c.accent} />
+          <Icon size={20} color={c.accent} />
         </div>
       </div>
 
       <div style={{
         fontFamily: '"Playfair Display"',
-        fontSize: '15.5px',
+        fontSize: '21px',
         fontWeight: 600,
         color: '#F4EFE4',
         lineHeight: 1.2,
-        marginBottom: '5px',
+        marginBottom: '6px',
       }}>
         {step.name}
       </div>
 
       <div style={{
         fontFamily: '"DM Sans"',
-        fontSize: '11.5px',
-        color: 'rgba(200,223,240,0.85)',
-        lineHeight: 1.35,
+        fontSize: '15px',
+        color: 'rgba(200,223,240,0.88)',
+        lineHeight: 1.4,
       }}>
         {step.why}
       </div>
@@ -240,13 +240,13 @@ function CircleStepNode({ step, position }) {
 //  - Top row (1,2,3) and bottom row (5,6,7) share the SAME x-coordinates (vertical mirror)
 //  - Step 4 is the TIP, on the right at the vertical midpoint
 const ZIGZAG_POSITIONS = [
-  { x: 130, y: 200 },  // Step 1: top-left
-  { x: 370, y: 200 },  // Step 2
-  { x: 610, y: 200 },  // Step 3: end of top row
-  { x: 860, y: 380 },  // Step 4: TIP (diagonal SE of step 3)
-  { x: 610, y: 560 },  // Step 5: directly below step 3 (diagonal SW from tip)
-  { x: 370, y: 560 },  // Step 6: left of step 5
-  { x: 130, y: 560 },  // Step 7: left of step 6 (bottom-left)
+  { x: 140, y: 200 },  // Step 1: top-left
+  { x: 420, y: 200 },  // Step 2
+  { x: 700, y: 200 },  // Step 3: end of top row (270px spacing)
+  { x: 950, y: 390 },  // Step 4: TIP (diagonal SE of step 3)
+  { x: 700, y: 580 },  // Step 5: directly below step 3
+  { x: 420, y: 580 },  // Step 6: left of step 5
+  { x: 140, y: 580 },  // Step 7: left of step 6 (bottom-left)
 ]
 
 export default function Slide5() {
@@ -290,7 +290,7 @@ export default function Slide5() {
           transition={{ duration: 0.7, delay: 0.1 }}
           style={{
             fontFamily: '"Playfair Display"',
-            fontSize: 'clamp(36px, 3.8vw, 50px)',
+            fontSize: 'clamp(38px, 4vw, 56px)',
             fontWeight: 600,
             color: '#F4EFE4',
             lineHeight: 1.15,
@@ -304,7 +304,7 @@ export default function Slide5() {
           transition={{ delay: 0.3 }}
           style={{
             fontFamily: '"DM Sans"',
-            fontSize: 'clamp(15px, 1.3vw, 18px)',
+            fontSize: 'clamp(17px, 1.5vw, 21px)',
             color: 'rgba(200,223,240,0.85)',
             marginTop: '10px',
             maxWidth: '900px',
@@ -318,7 +318,7 @@ export default function Slide5() {
       {/* Two-column main area: tech stack on the LEFT, circle on the RIGHT */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: '320px 1fr',
+        gridTemplateColumns: '360px 1fr',
         gap: '40px',
         width: '100%',
         maxWidth: '1500px',
@@ -339,12 +339,12 @@ export default function Slide5() {
         >
           <div style={{
             fontFamily: '"DM Sans"',
-            fontSize: '12px',
+            fontSize: '15px',
             letterSpacing: '0.24em',
             textTransform: 'uppercase',
-            color: 'rgba(217,188,130,0.85)',
+            color: 'rgba(217,188,130,0.9)',
             fontWeight: 600,
-            marginBottom: '6px',
+            marginBottom: '10px',
             paddingLeft: '4px',
           }}>
             Built With
@@ -369,28 +369,28 @@ export default function Slide5() {
                 }}
               >
                 <div style={{
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: '9px',
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
                   background: 'rgba(217,188,130,0.15)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexShrink: 0,
                 }}>
-                  <Icon size={18} color="rgba(217,188,130,1)" />
+                  <Icon size={22} color="rgba(217,188,130,1)" />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{
                     display: 'flex',
                     alignItems: 'baseline',
-                    gap: '8px',
-                    marginBottom: '2px',
+                    gap: '10px',
+                    marginBottom: '3px',
                     flexWrap: 'wrap',
                   }}>
                     <span style={{
                       fontFamily: '"JetBrains Mono"',
-                      fontSize: '14px',
+                      fontSize: '18px',
                       fontWeight: 600,
                       color: '#F4EFE4',
                     }}>
@@ -398,8 +398,8 @@ export default function Slide5() {
                     </span>
                     <span style={{
                       fontFamily: '"DM Sans"',
-                      fontSize: '10px',
-                      color: 'rgba(217,188,130,0.7)',
+                      fontSize: '13px',
+                      color: 'rgba(217,188,130,0.75)',
                       letterSpacing: '0.06em',
                     }}>
                       {tech.type}
@@ -407,9 +407,9 @@ export default function Slide5() {
                   </div>
                   <div style={{
                     fontFamily: '"DM Sans"',
-                    fontSize: '11.5px',
-                    color: 'rgba(200,223,240,0.78)',
-                    lineHeight: 1.4,
+                    fontSize: '15px',
+                    color: 'rgba(200,223,240,0.82)',
+                    lineHeight: 1.45,
                   }}>
                     {tech.desc}
                   </div>
@@ -456,8 +456,8 @@ export default function Slide5() {
               const p2 = positions[i + 1]
 
               // Trim each end so the arrow stops at the edge of the node card
-              const NODE_HALF_W = 95   // half card width (180px + small gap)
-              const NODE_HALF_H = 80   // half card height (150px + small gap)
+              const NODE_HALF_W = 110  // half card width (210px) + small gap
+              const NODE_HALF_H = 100  // half card height (190px) + small gap
               const dx = p2.x - p1.x
               const dy = p2.y - p1.y
               const len = Math.hypot(dx, dy)
@@ -525,7 +525,7 @@ export default function Slide5() {
                 y={positions[0].y - 93}
                 textAnchor="middle"
                 fill="rgba(217,188,130,1)"
-                style={{ fontFamily: '"JetBrains Mono"', fontSize: '12px', letterSpacing: '0.16em', fontWeight: 600 }}
+                style={{ fontFamily: '"JetBrains Mono"', fontSize: '15px', letterSpacing: '0.16em', fontWeight: 600 }}
               >
                 START
               </text>
@@ -553,7 +553,7 @@ export default function Slide5() {
                 y={positions[STEPS.length - 1].y + 103}
                 textAnchor="middle"
                 fill="rgba(140,235,190,1)"
-                style={{ fontFamily: '"JetBrains Mono"', fontSize: '12px', letterSpacing: '0.16em', fontWeight: 600 }}
+                style={{ fontFamily: '"JetBrains Mono"', fontSize: '15px', letterSpacing: '0.16em', fontWeight: 600 }}
               >
                 END
               </text>

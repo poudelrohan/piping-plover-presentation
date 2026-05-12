@@ -110,7 +110,7 @@ export default function SlideAcknowledgements() {
           <div>
             <div style={{
               fontFamily: '"Playfair Display"',
-              fontSize: 'clamp(20px, 1.7vw, 24px)',
+              fontSize: 'clamp(24px, 2vw, 30px)',
               fontWeight: 600,
               color: '#F4EFE4',
               lineHeight: 1.25,
@@ -120,8 +120,8 @@ export default function SlideAcknowledgements() {
             </div>
             <p style={{
               fontFamily: '"DM Sans"',
-              fontSize: 'clamp(14px, 1.2vw, 16px)',
-              color: 'rgba(200,223,240,0.85)',
+              fontSize: 'clamp(16px, 1.4vw, 20px)',
+              color: 'rgba(200,223,240,0.88)',
               lineHeight: 1.55,
             }}>
               For the opportunity to work on real conservation data.
@@ -159,7 +159,7 @@ export default function SlideAcknowledgements() {
           <div>
             <div style={{
               fontFamily: '"Playfair Display"',
-              fontSize: 'clamp(20px, 1.7vw, 24px)',
+              fontSize: 'clamp(24px, 2vw, 30px)',
               fontWeight: 600,
               color: '#F4EFE4',
               lineHeight: 1.25,
@@ -169,17 +169,17 @@ export default function SlideAcknowledgements() {
             </div>
             <div style={{
               fontFamily: '"DM Sans"',
-              fontSize: '13px',
+              fontSize: '16px',
               fontStyle: 'italic',
-              color: 'rgba(217,188,130,0.9)',
-              marginBottom: '10px',
+              color: 'rgba(217,188,130,0.95)',
+              marginBottom: '12px',
             }}>
               Center for Collaborative &amp; Experiential Learning
             </div>
             <p style={{
               fontFamily: '"DM Sans"',
-              fontSize: 'clamp(14px, 1.2vw, 16px)',
-              color: 'rgba(200,223,240,0.85)',
+              fontSize: 'clamp(16px, 1.4vw, 20px)',
+              color: 'rgba(200,223,240,0.88)',
               lineHeight: 1.55,
             }}>
               For making this internship possible.
@@ -215,34 +215,34 @@ export default function SlideAcknowledgements() {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <Users size={36} color="rgba(232,145,110,1)" />
+            <Users size={42} color="rgba(232,145,110,1)" />
           </div>
           <div>
             <div style={{
               fontFamily: '"DM Sans"',
-              fontSize: '12px',
+              fontSize: '14px',
               letterSpacing: '0.22em',
               textTransform: 'uppercase',
               color: 'rgba(232,145,110,0.95)',
               fontWeight: 600,
-              marginBottom: '8px',
+              marginBottom: '10px',
             }}>
               USFWS Mentors
             </div>
             <div style={{
               fontFamily: '"Playfair Display"',
-              fontSize: 'clamp(22px, 1.8vw, 26px)',
+              fontSize: 'clamp(24px, 2vw, 30px)',
               fontWeight: 600,
               color: '#F4EFE4',
-              lineHeight: 1.25,
-              marginBottom: '10px',
+              lineHeight: 1.3,
+              marginBottom: '12px',
             }}>
               Caroline Walker<br />Kevin Kalasz
             </div>
             <p style={{
               fontFamily: '"DM Sans"',
-              fontSize: 'clamp(14px, 1.2vw, 16px)',
-              color: 'rgba(200,223,240,0.85)',
+              fontSize: 'clamp(16px, 1.4vw, 20px)',
+              color: 'rgba(200,223,240,0.88)',
               lineHeight: 1.55,
             }}>
               For the guidance, the questions, and every weekly meeting.

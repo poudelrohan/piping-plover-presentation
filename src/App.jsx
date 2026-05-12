@@ -55,7 +55,10 @@ const slideVariants = {
 }
 
 export default function App() {
-  const [current, setCurrent] = useState(0)
+  const [current, setCurrent] = useState(() => {
+    const m = typeof window !== 'undefined' && window.location.search.match(/[?&]s=(\d+)/)
+    return m ? Math.max(0, Math.min(SLIDES.length - 1, parseInt(m[1], 10) - 1)) : 0
+  })
   const [dir, setDir] = useState(1)
 
   const goNext = useCallback(() => {

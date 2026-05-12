@@ -503,57 +503,57 @@ export default function Slide5() {
               )
             })}
 
-            {/* START label near step 0 */}
+            {/* START label above step 1. Card half-height is ~95, so pill needs to clear that. */}
             <motion.g
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
               <rect
-                x={positions[0].x - 36}
-                y={positions[0].y - 110}
-                width="72"
-                height="24"
-                rx="12"
-                fill="rgba(217,188,130,0.14)"
-                stroke="rgba(217,188,130,0.5)"
-                strokeWidth="1"
+                x={positions[0].x - 44}
+                y={positions[0].y - 145}
+                width="88"
+                height="30"
+                rx="15"
+                fill="rgba(217,188,130,0.16)"
+                stroke="rgba(217,188,130,0.55)"
+                strokeWidth="1.2"
                 strokeDasharray="3 3"
               />
               <text
                 x={positions[0].x}
-                y={positions[0].y - 93}
+                y={positions[0].y - 125}
                 textAnchor="middle"
                 fill="rgba(217,188,130,1)"
-                style={{ fontFamily: '"JetBrains Mono"', fontSize: '15px', letterSpacing: '0.16em', fontWeight: 600 }}
+                style={{ fontFamily: '"JetBrains Mono"', fontSize: '17px', letterSpacing: '0.16em', fontWeight: 600 }}
               >
                 START
               </text>
             </motion.g>
 
-            {/* END label below step 7 (the last node, now bottom-left), mirroring START which sits above step 1 */}
+            {/* END label below step 7 (the last node, now bottom-left), mirroring START. */}
             <motion.g
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6 }}
             >
               <rect
-                x={positions[STEPS.length - 1].x - 30}
-                y={positions[STEPS.length - 1].y + 86}
-                width="60"
-                height="24"
-                rx="12"
+                x={positions[STEPS.length - 1].x - 36}
+                y={positions[STEPS.length - 1].y + 115}
+                width="72"
+                height="30"
+                rx="15"
                 fill="rgba(100,210,165,0.16)"
-                stroke="rgba(100,210,165,0.55)"
-                strokeWidth="1"
+                stroke="rgba(100,210,165,0.6)"
+                strokeWidth="1.2"
                 strokeDasharray="3 3"
               />
               <text
                 x={positions[STEPS.length - 1].x}
-                y={positions[STEPS.length - 1].y + 103}
+                y={positions[STEPS.length - 1].y + 135}
                 textAnchor="middle"
                 fill="rgba(140,235,190,1)"
-                style={{ fontFamily: '"JetBrains Mono"', fontSize: '15px', letterSpacing: '0.16em', fontWeight: 600 }}
+                style={{ fontFamily: '"JetBrains Mono"', fontSize: '17px', letterSpacing: '0.16em', fontWeight: 600 }}
               >
                 END
               </text>

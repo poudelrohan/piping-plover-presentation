@@ -4,14 +4,29 @@ import Nav from './components/Nav'
 import FooterLogos from './components/FooterLogos'
 import Slide1 from './slides/Slide1'
 import Slide2 from './slides/Slide2'
+import SlideObjectives from './slides/SlideObjectives'
 import Slide3 from './slides/Slide3'
-import Slide4 from './slides/Slide4'
 import Slide5 from './slides/Slide5'
 import Slide6 from './slides/Slide6'
+import SlideResults from './slides/SlideResults'
 import Slide7 from './slides/Slide7'
+import SlideNext from './slides/SlideNext'
+import SlideAcknowledgements from './slides/SlideAcknowledgements'
 import Slide8 from './slides/Slide8'
 
-const SLIDES = [Slide1, Slide2, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8]
+const SLIDES = [
+  Slide1,                 // 1: Title
+  Slide2,                 // 2: About PIPL
+  SlideObjectives,        // 3: Project Objectives
+  Slide3,                 // 4: Data Sources
+  Slide5,                 // 5: Pipeline (methodology)
+  Slide6,                 // 6: Workflow
+  SlideResults,           // 7: Results
+  Slide7,                 // 8: ArcGIS / Where data goes
+  SlideNext,              // 9: What's Next + Reflections
+  SlideAcknowledgements,  // 10: Acknowledgements (NEW)
+  Slide8,                 // 11: Questions
+]
 
 // Slide direction for animation
 let direction = 1

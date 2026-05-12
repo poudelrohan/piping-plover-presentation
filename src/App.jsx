@@ -84,6 +84,15 @@ export default function App() {
     }
   }, [])
 
+  // Track fullscreen state so we can show a subtle top-left indicator only
+  // while presenting. The user can glance at it to confirm fullscreen is on.
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  useEffect(() => {
+    const handler = () => setIsFullscreen(!!document.fullscreenElement)
+    document.addEventListener('fullscreenchange', handler)
+    return () => document.removeEventListener('fullscreenchange', handler)
+  }, [])
+
   useEffect(() => {
     const handleKey = (e) => {
       // Ignore when user is typing in an input
@@ -158,6 +167,26 @@ export default function App() {
         />
 
         <FooterLogos />
+
+        {/* Tiny top-left dot — visible only in fullscreen so the presenter
+            can confirm at a glance. Stays subtle for the audience. */}
+        {isFullscreen && (
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: '20px',
+              left: '20px',
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              background: 'rgba(217,188,130,0.45)',
+              boxShadow: '0 0 4px rgba(217,188,130,0.25)',
+              zIndex: 60,
+              pointerEvents: 'none',
+            }}
+          />
+        )}
       </div>
     </div>
   )
